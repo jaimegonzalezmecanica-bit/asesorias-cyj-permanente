@@ -1,0 +1,101 @@
+# Terminal Full Output
+# Terminal: main
+# Command: cd /home/ubuntu && tar -xf upload/workspace-39f97234-e39a-424b-83e5-14a2cb4fc651\(1\).tar && ls -la
+# PID: 12831
+# Timestamp: 2026-03-24_22-56-28.018681
+# Original Length: 6834 characters
+# ----------------------------------------
+
+total 24212
+drwxr-x--- 31 ubuntu ubuntu     4096 Mar 24 22:56 [0m[01;34m.[0m
+drwxr-xr-x  4 root   root       4096 Mar 20 01:49 [01;34m..[0m
+-rwxr-xr-x  1 ubuntu ubuntu        0 Mar 23 20:04 [01;32m.accesslog[0m
+-rw-------  1 ubuntu ubuntu     8397 Mar 24 22:50 .bash_history
+-rw-r--r--  1 ubuntu ubuntu      220 Jan  6  2022 .bash_logout
+-rw-r--r--  1 ubuntu ubuntu     4260 Mar 20 01:50 .bashrc
+drwxr-xr-x 29 ubuntu ubuntu     4096 Mar 24 20:50 [01;34m.browser_data_dir[0m
+drwxr-xr-x 10 ubuntu ubuntu     4096 Mar 24 22:12 [01;34m.cache[0m
+drwxr-xr-x  7 ubuntu ubuntu     4096 Mar 24 20:50 [01;34m.config[0m
+-rw-r--r--  1 ubuntu ubuntu     1001 Mar 24 20:50 .env
+drwxrwxr-x  3 ubuntu ubuntu     4096 Mar 24 22:56 [01;34m.github[0m
+-rwxr-xr-x  1 ubuntu ubuntu      567 Jan 27 03:23 [01;32m.gitignore[0m
+drwxr-xr-x  2 ubuntu ubuntu     4096 Mar 24 21:29 [01;34m.history[0m
+drwxr-xr-x  4 ubuntu ubuntu     4096 Mar 20 01:43 [01;34m.local[0m
+drwxr-xr-x  4 ubuntu ubuntu     4096 Mar 20 01:51 [01;34m.logs[0m
+drwxr-xr-x  4 ubuntu ubuntu     4096 Mar 20 01:43 [01;34m.npm[0m
+drwxr-xr-x  8 ubuntu ubuntu     4096 Mar 20 01:43 [01;34m.nvm[0m
+drwx------  3 ubuntu ubuntu     4096 Mar 20 01:51 [01;34m.pki[0m
+-rw-r--r--  1 ubuntu ubuntu      807 Jan  6  2022 .profile
+drwx------  2 ubuntu ubuntu     4096 Mar 24 20:50 [01;34m.secrets[0m
+-rwxr-xr-x  1 ubuntu ubuntu        0 Mar 23 20:04 [01;32m.stats[0m
+-rw-r--r--  1 ubuntu ubuntu      141 Mar 24 22:56 .user_env
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34m.zscripts[0m
+-rw-rw-r--  1 ubuntu ubuntu      218 Mar 20 01:50 .zshrc
+-rwxr-xr-x  1 ubuntu ubuntu     5427 Mar 14 23:01 [01;32mCONTRATAR_GUIA.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu      493 Nov 24 03:25 [01;32mCaddyfile[0m
+-rwxr-xr-x  1 ubuntu ubuntu    10308 Mar 14 17:41 [01;32mDEPLOYMENT.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     7247 Mar 15 19:32 [01;32mDEPLOYMENT_GUIDE.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     4845 Mar 22 15:45 [01;32mDEPLOYMENT_VERCEL.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu    13183 Mar 14 23:10 [01;32mDIGITALOCEAN_GUIA.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     1551 Mar 14 17:40 [01;32mDockerfile[0m
+drwxr-xr-x  3 ubuntu ubuntu     4096 Mar 20 01:51 [01;34mDownloads[0m
+-rwxr-xr-x  1 ubuntu ubuntu    11878 Mar 15 19:50 [01;32mGUIA_COMPLETA.md[0m
+-rw-r--r--  1 ubuntu ubuntu     7261 Mar 24 22:17 GUIA_DESPLIEGUE_PERMANENTE.md
+-rw-r--r--  1 ubuntu ubuntu     3081 Mar 24 21:57 GUIA_DESPLIEGUE_PRODUCCION.md
+-rwxr-xr-x  1 ubuntu ubuntu     8685 Mar 21 23:11 [01;32mGUIA_DESPLIEGUE_VERCEL.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu    12682 Mar 21 23:27 [01;32mGUIA_PRINCIPIANTES.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     7568 Mar 22 01:09 [01;32mINSTRUCCIONES_SIMPLES.txt[0m
+-rwxr-xr-x  1 ubuntu ubuntu     5247 Mar 14 22:30 [01;32mMakefile[0m
+-rwxr-xr-x  1 ubuntu ubuntu 18257334 Mar 22 03:38 [01;32mPARA_SUBIR_A_VERCEL.zip[0m
+-rwxr-xr-x  1 ubuntu ubuntu     2468 Mar 21 23:12 [01;32mPRODUCCION.md[0m
+drwxr-xr-x  5 ubuntu ubuntu     4096 Mar 24 20:51 [01;34mProyecto[0m
+-rwxr-xr-x  1 ubuntu ubuntu     4478 Mar 14 17:43 [01;32mREADME.md[0m
+-rw-r--r--  1 ubuntu ubuntu     7538 Mar 24 22:34 RESUMEN_IMPLEMENTACION_MASIVA.md
+-rwxr-xr-x  1 ubuntu ubuntu     1125 Mar 22 01:09 [01;32mRESUMEN_SIMPLE.txt[0m
+-rwxr-xr-x  1 ubuntu ubuntu     2719 Mar 15 00:06 [01;32mTUNEL_ALTERNATIVAS.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     5864 Mar 14 23:34 [01;32mTUNEL_GUIA.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     7269 Mar 21 23:28 [01;32mUBICACION_ARCHIVOS.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     4361 Mar 15 19:43 [01;32mUPLOAD_GUIDE.md[0m
+-rwxr-xr-x  1 ubuntu ubuntu     2976 Mar 22 01:09 [01;32mVARIABLES_QUE_NECESITAS.txt[0m
+-rw-r--r--  1 ubuntu ubuntu     3001 Mar 24 21:50 analisis_movil_ot.md
+-rw-r--r--  1 ubuntu ubuntu     5198 Mar 24 21:23 analisis_proyecto.md
+drwxrwxr-x  4 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mbackups[0m
+-rw-r--r--  1 ubuntu ubuntu   354197 Mar 24 22:37 bun.lock
+-rw-r--r--  1 ubuntu ubuntu     2421 Mar 24 21:52 casos_prueba_movil.md
+-rwxr-xr-x  1 ubuntu ubuntu      430 Oct 29 00:07 [01;32mcomponents.json[0m
+-rwxr-xr-x  1 ubuntu ubuntu      260 Mar 17 17:40 [01;32mcookies.txt[0m
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mdb[0m
+drwxrwxr-x  3 ubuntu ubuntu     4096 Mar 24 22:03 [01;34mdemo-cyj[0m
+-rwxr-xr-x  1 ubuntu ubuntu     6395 Mar 14 17:42 [01;32mdeploy.sh[0m
+-rwxr-xr-x  1 ubuntu ubuntu     4521 Mar 14 22:23 [01;32mdocker-compose.prod.yml[0m
+-rwxr-xr-x  1 ubuntu ubuntu     2003 Mar 14 17:40 [01;32mdocker-compose.yml[0m
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mdownload[0m
+-rwxr-xr-x  1 ubuntu ubuntu      513 Mar 15 19:32 [01;32mecosystem.config.js[0m
+-rwxr-xr-x  1 ubuntu ubuntu     1632 Jan 20 01:20 [01;32meslint.config.mjs[0m
+drwxrwxr-x  3 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mexamples[0m
+-rw-r--r--  1 ubuntu ubuntu     6160 Mar 24 21:45 informe_mejoras_proyecto.md
+-rw-r--r--  1 ubuntu ubuntu    14043 Mar 24 21:52 informe_optimizacion_movil_ot.md
+-rwxrwxr-x  1 ubuntu ubuntu      227 Mar 24 20:58 [01;32mkeep-alive.sh[0m
+drwxrwxr-x  4 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mmini-services[0m
+-rwxr-xr-x  1 ubuntu ubuntu      386 Mar 22 22:48 [01;32mnext.config.ts[0m
+-rwxr-xr-x  1 ubuntu ubuntu   342020 Mar 20 08:56 [01;32mpackage-lock.json[0m
+-rwxr-xr-x  1 ubuntu ubuntu     3441 Mar 24 22:37 [01;32mpackage.json[0m
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mpara_descargar[0m
+-rwxr-xr-x  1 ubuntu ubuntu       81 Oct 29 00:07 [01;32mpostcss.config.mjs[0m
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mprisma[0m
+-rwxr-xr-x  1 ubuntu ubuntu  1683983 Mar 15 19:50 [01;32mproyecto-completo.zip[0m
+-rwxr-xr-x  1 ubuntu ubuntu  2270005 Mar 21 23:45 [01;32mproyecto-cyj-completo.zip[0m
+drwxrwxr-x  5 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mpublic[0m
+-rw-r--r--  1 ubuntu ubuntu       19 Mar 20 01:46 sandbox.txt
+drwxrwxr-x  2 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mscripts[0m
+drwxr-xr-x  3 ubuntu ubuntu     4096 Mar 24 20:50 [01;34mskills[0m
+drwxrwxr-x  6 ubuntu ubuntu     4096 Mar 24 22:56 [01;34msrc[0m
+-rwxrwxr-x  1 ubuntu ubuntu       79 Mar 24 20:53 [01;32mstart-server.sh[0m
+drwxrwxr-x  3 ubuntu ubuntu     4096 Mar 24 22:56 [01;34mstatic-landing[0m
+-rwxr-xr-x  1 ubuntu ubuntu  1355079 Mar 15 19:50 [01;32mstatic-landing.zip[0m
+-rwxr-xr-x  1 ubuntu ubuntu     1696 Oct 29 00:07 [01;32mtailwind.config.ts[0m
+drwx------  2 ubuntu ubuntu     4096 Mar 24 22:48 [01;34mterminal_full_output[0m
+-rwxr-xr-x  1 ubuntu ubuntu      730 Mar 14 03:59 [01;32mtsconfig.json[0m
+drwxr-xr-x  2 ubuntu ubuntu     8192 Mar 24 22:56 [01;34mupload[0m
+-rwxr-xr-x  1 ubuntu ubuntu      199 Mar 22 03:37 [01;32mvercel.json[0m
+-rwxr-xr-x  1 ubuntu ubuntu    36852 Mar 24 21:58 [01;32mworklog.md[0m

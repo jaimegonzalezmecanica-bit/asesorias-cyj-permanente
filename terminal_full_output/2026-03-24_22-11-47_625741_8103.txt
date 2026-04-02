@@ -1,0 +1,89 @@
+# Terminal Full Output
+# Terminal: demo_install
+# Command: cd /home/ubuntu/demo-cyj/Proyecto && pnpm install --no-frozen-lockfile
+# PID: 8103
+# Timestamp: 2026-03-24_22-11-47.625741
+# Original Length: 7081 characters
+# ----------------------------------------
+
+Progress: resolved [96m1[39m, reused [96m0[39m, downloaded [96m0[39m, added [96m0[39m
+[1AProgress: resolved [96m5[39m, reused [96m0[39m, downloaded [96m0[39m, added [96m0[39m
+[1AProgress: resolved [96m8[39m, reused [96m1[39m, downloaded [96m2[39m, added [96m0[39m
+[1A[33m[39m
+[33m   ╭──────────────────────────────────────────╮[39m
+   [33m│[39m                                          [33m│[39m
+   [33m│[39m   Update available! [31m10.32.1[39m → [32m10.33.0[39m.   [33m│[39m
+   [33m│[39m   [35mChangelog:[39m https://pnpm.io/v/10.33.0   [33m│[39m
+   [33m│[39m     To update, run: [35mpnpm self-update[39m     [33m│[39m
+   [33m│[39m                                          [33m│[39m
+[33m   ╰──────────────────────────────────────────╯[39m
+[33m[39m
+Progress: resolved [96m8[39m, reused [96m1[39m, downloaded [96m2[39m, added [96m0[39m
+[1AProgress: resolved [96m17[39m, reused [96m6[39m, downloaded [96m8[39m, added [96m0[39m
+[1AProgress: resolved [96m36[39m, reused [96m20[39m, downloaded [96m13[39m, added [96m0[39m
+[1AProgress: resolved [96m55[39m, reused [96m28[39m, downloaded [96m21[39m, added [96m0[39m
+[1AProgress: resolved [96m61[39m, reused [96m31[39m, downloaded [96m24[39m, added [96m0[39m
+[1AProgress: resolved [96m68[39m, reused [96m37[39m, downloaded [96m28[39m, added [96m0[39m
+[1AProgress: resolved [96m76[39m, reused [96m40[39m, downloaded [96m33[39m, added [96m0[39m
+[1AProgress: resolved [96m77[39m, reused [96m40[39m, downloaded [96m36[39m, added [96m0[39m
+[1AProgress: resolved [96m78[39m, reused [96m40[39m, downloaded [96m36[39m, added [96m0[39m
+Downloading next@16.2.1: [96m0.00 B[39m/[96m33.95 MB[39m
+[1ADownloading next@16.2.1: [96m15.78 kB[39m/[96m33.95 MB[39m
+Downloading prisma@6.19.2: [96m0.00 B[39m/[96m17.62 MB[39m
+[1ADownloading prisma@6.19.2: [96m3.62 kB[39m/[96m17.62 MB[39m
+[3AProgress: resolved [96m80[39m, reused [96m40[39m, downloaded [96m36[39m, added [96m0[39m
+[2B[2ADownloading next@16.2.1: [96m8.02 MB[39m/[96m33.95 MB[39m
+[1B[1ADownloading prisma@6.19.2: [96m7.32 MB[39m/[96m17.62 MB[39m
+[1ADownloading prisma@6.19.2: [96m7.34 MB[39m/[96m17.62 MB[39m
+[2ADownloading next@16.2.1: [96m8.04 MB[39m/[96m33.95 MB[39m
+[1BDownloading @prisma/client@6.19.2: [96m0.00 B[39m/[96m27.25 MB[39m
+[1ADownloading @prisma/client@6.19.2: [96m4.06 kB[39m/[96m27.25 MB[39m
+[4AProgress: resolved [96m97[39m, reused [96m46[39m, downloaded [96m43[39m, added [96m0[39m
+[3B[4AProgress: resolved [96m117[39m, reused [96m48[39m, downloaded [96m57[39m, added [96m0[39m
+[3B[4ADownloading prisma@6.19.2: [96m17.62 MB[39m/[96m17.62 MB[39m, done
+Progress: resolved [96m117[39m, reused [96m48[39m, downloaded [96m57[39m, added [96m0[39m
+Downloading next@16.2.1: [96m8.04 MB[39m/[96m33.95 MB[39m
+[1B[2ADownloading next@16.2.1: [96m28.50 MB[39m/[96m33.95 MB[39m
+[1B[3ADownloading @prisma/client@6.19.2: [96m27.25 MB[39m/[96m27.25 MB[39m, done
+Progress: resolved [96m117[39m, reused [96m48[39m, downloaded [96m57[39m, added [96m0[39m
+Downloading next@16.2.1: [96m28.50 MB[39m/[96m33.95 MB[39m
+[2AProgress: resolved [96m131[39m, reused [96m50[39m, downloaded [96m73[39m, added [96m0[39m
+[1B[2AProgress: resolved [96m142[39m, reused [96m50[39m, downloaded [96m84[39m, added [96m0[39m
+[1B[2ADownloading next@16.2.1: [96m33.95 MB[39m/[96m33.95 MB[39m, done
+Progress: resolved [96m142[39m, reused [96m50[39m, downloaded [96m84[39m, added [96m0[39m
+[1AProgress: resolved [96m157[39m, reused [96m52[39m, downloaded [96m93[39m, added [96m0[39m
+[1AProgress: resolved [96m181[39m, reused [96m63[39m, downloaded [96m106[39m, added [96m0[39m
+[1AProgress: resolved [96m200[39m, reused [96m78[39m, downloaded [96m113[39m, added [96m0[39m
+[1AProgress: resolved [96m212[39m, reused [96m87[39m, downloaded [96m115[39m, added [96m0[39m
+[1AProgress: resolved [96m230[39m, reused [96m93[39m, downloaded [96m124[39m, added [96m0[39m
+[1AProgress: resolved [96m237[39m, reused [96m93[39m, downloaded [96m132[39m, added [96m0[39m
+[1AProgress: resolved [96m241[39m, reused [96m93[39m, downloaded [96m137[39m, added [96m0[39m
+[1AProgress: resolved [96m250[39m, reused [96m93[39m, downloaded [96m142[39m, added [96m0[39m
+Downloading @next/swc-linux-x64-gnu@16.2.1: [96m0.00 B[39m/[96m45.14 MB[39m
+[1ADownloading @next/swc-linux-x64-gnu@16.2.1: [96m15.77 kB[39m/[96m45.14 MB[39m
+[2AProgress: resolved [96m255[39m, reused [96m94[39m, downloaded [96m147[39m, added [96m0[39m
+[1B[2AProgress: resolved [96m262[39m, reused [96m98[39m, downloaded [96m149[39m, added [96m0[39m
+[1B[1ADownloading @next/swc-linux-x64-gnu@16.2.1: [96m2.00 MB[39m/[96m45.14 MB[39m
+[2AProgress: resolved [96m282[39m, reused [96m109[39m, downloaded [96m155[39m, added [96m0[39m
+[1B[2AProgress: resolved [96m319[39m, reused [96m115[39m, downloaded [96m158[39m, added [96m0[39m
+[1BDownloading @img/sharp-libvips-linux-x64@1.2.4: [96m0.00 B[39m/[96m7.53 MB[39m
+[1ADownloading @img/sharp-libvips-linux-x64@1.2.4: [96m15.77 kB[39m/[96m7.53 MB[39m
+[3AProgress: resolved [96m335[39m, reused [96m121[39m, downloaded [96m169[39m, added [96m0[39m
+[2B[2ADownloading @next/swc-linux-x64-gnu@16.2.1: [96m2.42 MB[39m/[96m45.14 MB[39m
+[1B[3AProgress: resolved [96m361[39m, reused [96m125[39m, downloaded [96m181[39m, added [96m0[39m
+[2B[1ADownloading @img/sharp-libvips-linux-x64@1.2.4: [96m3.25 MB[39m/[96m7.53 MB[39m
+[3AProgress: resolved [96m386[39m, reused [96m128[39m, downloaded [96m201[39m, added [96m0[39m
+[2B[2ADownloading @next/swc-linux-x64-gnu@16.2.1: [96m2.70 MB[39m/[96m45.14 MB[39m
+[1B[3AProgress: resolved [96m411[39m, reused [96m132[39m, downloaded [96m216[39m, added [96m0[39m
+[2B[3AProgress: resolved [96m429[39m, reused [96m133[39m, downloaded [96m235[39m, added [96m0[39m
+[2B[1ADownloading @img/sharp-libvips-linux-x64@1.2.4: [96m3.58 MB[39m/[96m7.53 MB[39m
+[3AProgress: resolved [96m448[39m, reused [96m133[39m, downloaded [96m251[39m, added [96m0[39m
+[2B[2ADownloading @next/swc-linux-x64-gnu@16.2.1: [96m4.69 MB[39m/[96m45.14 MB[39m
+[1B[3AProgress: resolved [96m459[39m, reused [96m134[39m, downloaded [96m263[39m, added [96m0[39m
+[2B[3ADownloading @img/sharp-libvips-linux-x64@1.2.4: [96m7.53 MB[39m/[96m7.53 MB[39m, done
+Progress: resolved [96m459[39m, reused [96m134[39m, downloaded [96m263[39m, added [96m0[39m
+Downloading @next/swc-linux-x64-gnu@16.2.1: [96m4.69 MB[39m/[96m45.14 MB[39m
+Downloading @codesandbox/sandpack-client@2.19.8: [96m0.00 B[39m/[96m17.78 MB[39m
+[1ADownloading @codesandbox/sandpack-client@2.19.8: [96m15.77 kB[39m/[96m17.78 MB[39m
+[3AProgress: resolved [96m471[39m, reused [96m138[39m, downloaded [96m270[39m, added [96m0[39m
+[2B

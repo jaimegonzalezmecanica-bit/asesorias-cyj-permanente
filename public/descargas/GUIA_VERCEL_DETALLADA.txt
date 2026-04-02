@@ -1,0 +1,336 @@
+================================================================================
+        GUÍA DETALLADA - IMPORTAR PROYECTO EN VERCEL
+        Sigue CADA paso con calma
+================================================================================
+
+
+================================================================================
+ANTES DE EMPEZAR - VERIFICA ESTO:
+================================================================================
+
+✅ ¿Ya subiste los archivos a GitHub?
+   → Ve a github.com/tu-usuario/sistema-cyj
+   → ¿Ves los archivos (src, prisma, package.json, etc.)?
+   → Si NO los ves, primero súbelos a GitHub
+
+✅ ¿Ya creaste la base de datos en Neon?
+   → Ve a neon.tech
+   → ¿Copiaste la URL de conexión?
+   → Se ve así: postgresql://usuario:password@ep-xxx.neon.tech/...
+   → Si NO la tienes, créala primero
+
+✅ ¿Ya tienes cuenta en Vercel conectada con GitHub?
+   → Ve a vercel.com
+   → ¿Iniciaste sesión con GitHub?
+
+
+================================================================================
+PASO 1: ENTRAR A VERCEL
+================================================================================
+
+1. Abre tu navegador (Chrome, Firefox, Edge)
+
+2. En la barra de direcciones escribe: vercel.com
+
+3. Presiona ENTER
+
+4. Si NO has iniciado sesión:
+   - Haz clic en "Log In" (arriba a la derecha)
+   - Selecciona "Continue with GitHub"
+   - Autoriza si te pide permiso
+
+5. Ahora estás en el "Dashboard" de Vercel
+   (Es la página principal donde ves tus proyectos)
+
+
+================================================================================
+PASO 2: CREAR NUEVO PROYECTO
+================================================================================
+
+1. Busca un botón que dice "Add New..." 
+   (Puede estar arriba a la derecha o en el centro)
+
+2. Haz clic en "Add New..."
+
+3. Se abrirá un menú con opciones
+
+4. Selecciona "Project"
+
+5. Ahora verás una página que dice "Import Git Repository"
+
+
+================================================================================
+PASO 3: IMPORTAR TU REPOSITORIO
+================================================================================
+
+En la página "Import Git Repository":
+
+1. Verás una sección que dice "Import Git Repository"
+
+2. Debajo verás tus repositorios de GitHub listados
+
+3. Busca el que dice "sistema-cyj" 
+
+4. Si NO lo ves:
+   - Haz clic en "Adjust GitHub App Permissions"
+   - Autoriza a Vercel para ver tus repositorios
+   - Selecciona "All repositories" o busca "sistema-cyj"
+   - Haz clic en "Save"
+   - Ahora deberías ver "sistema-cyj"
+
+5. Cuando encuentres "sistema-cyj", haz clic en el botón "Import"
+   (Está a la derecha del nombre del repositorio)
+
+
+================================================================================
+PASO 4: CONFIGURAR EL PROYECTO
+================================================================================
+
+Ahora verás la página "Configure Project":
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ CONFIGURE PROJECT                                                    │
+│                                                                      │
+│ Framework Preset: Next.js ✓                                         │
+│                                                                      │
+│ Root Directory: ./                                                   │
+│                                                                      │
+│ Build Command: next build                                           │
+│ Output Directory: .next                                             │
+│ Install Command: npm install                                        │
+│                                                                      │
+│ ─────────────────────────────────────────────────────────────────── │
+│ ENVIRONMENT VARIABLES                                               │
+│                                                                      │
+│ Key                    Value                                        │
+│ [________________]    [____________________________]    [Add]       │
+│                                                                      │
+│ ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│                    [Deploy] (botón azul grande)                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+NO HAGAS CLIC EN DEPLOY TODAVÍA. Primero configura las variables.
+
+
+================================================================================
+PASO 5: AGREGAR VARIABLES DE ENTORNO (MUY IMPORTANTE)
+================================================================================
+
+Busca la sección "Environment Variables" (está antes del botón Deploy).
+
+--- VARIABLE 1: DATABASE_URL ---
+
+1. En el cuadro que dice "Key" escribe:
+   DATABASE_URL
+   (Exactamente así, con mayúsculas y guión bajo)
+
+2. En el cuadro que dice "Value" pega tu URL de Neon:
+   postgresql://usuario:contraseña@ep-xxx.neon.tech/neondb?sslmode=require
+   (Esta es la URL que copiaste de Neon.tech)
+
+3. Haz clic en el botón "Add"
+
+Ahora verás que la variable aparece abajo como una tarjeta.
+
+
+--- VARIABLE 2: NEXTAUTH_SECRET ---
+
+4. En el nuevo cuadro "Key" escribe:
+   NEXTAUTH_SECRET
+
+5. En el cuadro "Value" escribe:
+   cyj-sistema-secreto-2024-produccion-seguro
+
+6. Haz clic en "Add"
+
+
+--- VERIFICACIÓN ---
+
+Deberías ver algo así:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ ENVIRONMENT VARIABLES                                               │
+│                                                                      │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ DATABASE_URL                                                    │ │
+│ │ postgresql://user:pass@ep-xxx.neon.tech/neondb?sslmode=require  │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│                                                                      │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ NEXTAUTH_SECRET                                                 │ │
+│ │ cyj-sistema-secreto-2024-produccion-seguro                      │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│                                                                      │
+│ Key                    Value                                        │
+│ [________________]    [____________________________]    [Add]       │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+PASO 6: HACER DEPLOY
+================================================================================
+
+1. Ya configuraste las variables ✓
+
+2. Haz clic en el botón AZUL GRANDE que dice "Deploy"
+
+3. Ahora verás una pantalla con una barra de progreso:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ Building...                                                          │
+│ ████████████████░░░░░░░░░░░░░░░░░░░░  45%                           │
+│                                                                      │
+│ ▸ Queuing...                                                        │
+│ ▸ Building...                                                       │
+│   ▸ Installing dependencies...                                      │
+│   ▸ Building project...                                             │
+└─────────────────────────────────────────────────────────────────────┘
+
+4. Espera 2-5 minutos. Verás diferentes mensajes:
+   - "Installing dependencies..."
+   - "Building..."
+   - "Collecting build outputs..."
+   - "Deploying..."
+
+5. NO cierres la página. Espera.
+
+
+================================================================================
+PASO 7: DEPLOY COMPLETADO
+================================================================================
+
+Cuando termine, verás:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                       🎉                                             │
+│               Congratulations!                                       │
+│                                                                      │
+│         Your project has been deployed to production.               │
+│                                                                      │
+│ ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│ 🌐 DOMAINS                                                          │
+│                                                                      │
+│ sistema-cyj-abc123.vercel.app                          [Visit]      │
+│                                                                      │
+│ ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│ [Add Domain]  [Go to Dashboard]                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+6. ¡LISTO! Tu sistema está en internet.
+
+7. La URL es: https://sistema-cyj-xxx.vercel.app
+   (El "xxx" será diferente para cada proyecto)
+
+
+================================================================================
+PASO 8: CREAR USUARIO ADMINISTRADOR
+================================================================================
+
+1. Copia tu URL (ejemplo: https://sistema-cyj-abc123.vercel.app)
+
+2. Agrega al final: /api/auth/init-admin
+
+3. La URL completa será:
+   https://sistema-cyj-abc123.vercel.app/api/auth/init-admin
+
+4. Ve a esa URL en tu navegador
+
+5. Verás un mensaje como:
+   {"success":true,"message":"Usuario admin creado correctamente"}
+
+6. Ahora ve a tu URL principal:
+   https://sistema-cyj-abc123.vercel.app
+
+7. Verás la página de login
+
+8. Ingresa:
+   Usuario: admin
+   Contraseña: admin123
+
+9. ¡ENTRASTE A TU SISTEMA!
+
+
+================================================================================
+SI HAY ERRORES
+================================================================================
+
+ERROR: "Build Failed"
+   → Haz clic en "View Build Logs"
+   → Busca líneas rojas que indican el error
+   → Lo más común: vercel.json mal configurado
+   → Solución: Edita vercel.json en GitHub y haz "Redeploy"
+
+ERROR: "Cannot connect to database"
+   → Ve a Vercel → Settings → Environment Variables
+   → Verifica que DATABASE_URL está correcta
+   → Ve a Neon.tech y verifica que la base de datos está activa
+
+ERROR: "Internal Server Error" al entrar al sitio
+   → Ve a /api/auth/init-admin
+   → Esto crea el usuario admin
+   → Intenta de nuevo
+
+ERROR: "404 Not Found"
+   → Espera 2-3 minutos (Vercel tarda en propagar)
+   → Recarga la página
+   → Verifica que la URL está correcta
+
+
+================================================================================
+CÓMO HACER REDEPLOY (si necesitas actualizar)
+================================================================================
+
+1. Ve a Vercel Dashboard
+
+2. Haz clic en tu proyecto "sistema-cyj"
+
+3. Si actualizaste código en GitHub:
+   - Vercel detectará el cambio automáticamente
+   - Hará un nuevo deploy
+
+4. Si quieres forzar un nuevo deploy:
+   - Ve a "Deployments" (pestaña arriba)
+   - Haz clic en los "..." del último deploy
+   - Selecciona "Redeploy"
+
+
+================================================================================
+CÓMO VER LAS VARIABLES DE ENTORNO EN VERCEL
+================================================================================
+
+1. Ve a Vercel Dashboard
+
+2. Haz clic en tu proyecto "sistema-cyj"
+
+3. Ve a la pestaña "Settings" (arriba)
+
+4. En el menú izquierdo, selecciona "Environment Variables"
+
+5. Ahí puedes:
+   - Ver las variables existentes
+   - Agregar nuevas variables
+   - Editar variables existentes
+   - Eliminar variables
+
+
+================================================================================
+RESUMEN
+================================================================================
+
+1. Ve a vercel.com → Login con GitHub
+2. "Add New..." → "Project"
+3. Busca "sistema-cyj" → "Import"
+4. Configura variables:
+   - DATABASE_URL = (tu URL de Neon)
+   - NEXTAUTH_SECRET = cyj-sistema-secreto-2024-produccion-seguro
+5. "Deploy"
+6. Espera 2-5 minutos
+7. Ve a /api/auth/init-admin
+8. Login: admin / admin123
+
+================================================================================

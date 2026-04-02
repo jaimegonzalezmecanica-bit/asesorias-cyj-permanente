@@ -1,0 +1,92 @@
+# Terminal Full Output
+# Terminal: sh1
+# Command: sudo npm install xlsx
+# PID: 14150
+# Timestamp: 2026-03-24_23-20-36.528615
+# Original Length: 7975 characters
+# ----------------------------------------
+
+[?25h[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/config-array@0.21.1',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/config-helpers@0.4.2',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/core@0.17.0',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/eslintrc@3.3.3',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: 'globals@14.0.0',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/js@9.39.2',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/object-schema@2.1.7',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@eslint/plugin-kit@0.4.1',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@humanfs/core@0.19.1',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18.18.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@humanfs/node@0.16.7',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18.18.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@humanwhocodes/retry@0.4.3',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18.18' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@img/colour@1.0.0',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@mdxeditor/editor@3.52.3',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=16' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@mdxeditor/gurx@1.2.4',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=16' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@prisma/client@6.19.2',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '>=18.18' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@typescript-eslint/eslint-plugin@8.53.0',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   current: { node: 'v12.22.9', npm: '8.5.1' }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m }
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m Unsupported engine {
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   package: '@typescript-eslint/parser@8.53.0',
+[0m[37;40mnpm[0m [0m[30;43mWARN[0m [0m[35mEBADENGINE[0m   required: { node: '^18.18.0 || ^20.9.0 || >=21.1.0' },
+[0m[37;40mnpm[0m [0m[30;43

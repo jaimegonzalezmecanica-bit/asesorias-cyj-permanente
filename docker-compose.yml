@@ -1,0 +1,74 @@
+# ===========================================
+# Docker Compose - Condominio Laguna Norte
+# Sistema de Gestión v2
+# ===========================================
+
+version: '3.8'
+
+services:
+  # =========================================
+  # Aplicación Principal Next.js
+  # =========================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: condominio-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/condominio.db
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-cambiar-en-produccion}
+    volumes:
+      # Persistir base de datos SQLite
+      - condominio-data:/app/data
+      # Persistir archivos subidos
+      - condominio-uploads:/app/upload
+    networks:
+      - condominio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # =========================================
+  # Servicio Scheduler (OTs Recurrentes)
+  # =========================================
+  ot-scheduler:
+    build:
+      context: ./mini-services/ot-scheduler
+      dockerfile: Dockerfile.scheduler
+    container_name: condominio-scheduler
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/condominio.db
+      - API_BASE_URL=http://app:3000
+    volumes:
+      - condominio-data:/app/data
+    networks:
+      - condominio-network
+    depends_on:
+      app:
+        condition: service_healthy
+
+# =========================================
+# Volúmenes Persistentes
+# =========================================
+volumes:
+  condominio-data:
+    driver: local
+  condominio-uploads:
+    driver: local
+
+# =========================================
+# Red Interna
+# =========================================
+networks:
+  condominio-network:
+    driver: bridge

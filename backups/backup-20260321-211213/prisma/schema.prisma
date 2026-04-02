@@ -1,0 +1,1077 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// CONDOMINIOS (MULTI-CONDOMINIO)
+// ============================================
+model Condominio {
+  id            String   @id @default(cuid())
+  nombre        String
+  direccion     String?
+  comuna        String?
+  ciudad        String?
+  rut           String?
+  telefono      String?
+  email         String?
+  logo          String?  // URL o base64 del logo
+  etapas        String?  // JSON array de etapas: ["BANDURRIAS", "BECACINAS", etc.]
+  estado        String   @default("Activo") // Activo, Inactivo
+  fechaInicio   String?  // Fecha inicio del contrato
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relaciones
+  propiedades   Propiedad[]
+  residentes    Residente[]
+  personal      Personal[]
+  activos       Activo[]
+  ordenesTrabajo OrdenTrabajo[]
+  proyectos     Proyecto[]
+  inspecciones  Inspeccion[]
+  gastos        Gasto[]
+  proveedores   Proveedor[]
+  reservas      Reserva[]
+  gastosComunes GastoComun[]
+  notificaciones Notificacion[]
+  catMateriales CatMaterial[]
+  catHerramientas CatHerramienta[]
+  catTareas     CatTarea[]
+  centroCostos  CentroCostoMaster[]
+  puntosRonda   PuntoRonda[]
+}
+
+// ============================================
+// USUARIOS Y AUTENTICACIÓN
+// ============================================
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  nombre        String
+  apellido      String?
+  password      String   // Hash de la contraseña (bcrypt)
+  rut           String?  @unique
+  
+  // Información de contacto encriptada
+  telefono      String?  // Encriptado
+  direccion     String?  // Encriptado
+  
+  // Rol y permisos
+  rol           String   @default("usuario") // admin, supervisor, usuario
+  permisos      String?  // JSON con permisos específicos
+  
+  // Estado
+  activo        Boolean  @default(true)
+  emailVerificado DateTime?
+  ultimoAcceso  DateTime?
+  
+  // Seguridad
+  intentosLogin Int      @default(0)
+  bloqueadoHasta DateTime?
+  twoFactorSecret String? // Para 2FA en el futuro
+  twoFactorEnabled Boolean @default(false)
+  
+  // Tokens
+  resetToken    String?
+  resetTokenExp DateTime?
+  
+  // Auditoría
+  creadoPor     String?  // ID del usuario que creó este usuario
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relaciones
+  sessions      Session[]
+  cuentas       Cuenta[]
+  logsAuditoria LogAuditoria[]
+}
+
+// ============================================
+// SESIONES DE USUARIO
+// ============================================
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token        String   @unique
+  userAgent    String?
+  ip           String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+}
+
+// ============================================
+// CUENTAS EXTERNAS (OAuth)
+// ============================================
+model Cuenta {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider     String   // google, facebook, etc.
+  providerId   String   // ID del proveedor
+  accessToken  String?
+  refreshToken String?
+  expiresAt    DateTime?
+  createdAt    DateTime @default(now())
+  
+  @@unique([provider, providerId])
+}
+
+// ============================================
+// LOGS DE AUDITORÍA
+// ============================================
+model LogAuditoria {
+  id          String   @id @default(cuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  accion      String   // login, logout, create, update, delete
+  entidad     String   // Nombre del modelo afectado
+  entidadId   String?  // ID del registro afectado
+  datosAntes  String?  // JSON con datos antes del cambio
+  datosDespues String? // JSON con datos después del cambio
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+}
+
+// ============================================
+// PROPIEDADES / UNIDADES
+// ============================================
+model Propiedad {
+  id           String   @id @default(cuid())
+  nombre       String
+  tipo         String   @default("Casa") // Casa, Departamento, Local Comercial, Bodega, Estacionamiento
+  estado       String   @default("Disponible") // Disponible, Ocupado, Arriendo, Venta, Mantenimiento, Reservado
+  direccion    String?
+  habitaciones Int      @default(0)
+  banos        Int      @default(0)
+  mts2         Float    @default(0)
+  precio       Float    @default(0)
+  contacto     String?
+  telefono     String?
+  email        String?
+  fotos        String?  // JSON array of base64 or URLs
+  notas        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId String?
+  condominio   Condominio? @relation(fields: [condominioId], references: [id])
+
+  residentes   Residente[]
+  otPropiedad  OrdenTrabajo[] @relation("OTPropiedad")
+}
+
+// ============================================
+// RESIDENTES
+// ============================================
+model Residente {
+  id            String   @id @default(cuid())
+  nombre        String
+  apellido      String?
+  rut           String?
+  unidad        String?
+  etapa         String?  // BANDURRIAS, BECACINAS, etc.
+  tipo          String   @default("Residente") // Residente, Propietario, Arrendatario, Visita
+  telefono      String?
+  email         String?
+  fechaIngreso  String?  // Date as string
+  estado        String   @default("Activo") // Activo, Moroso, Vacaciones, Licencia, Inactivo
+  vehiculos     String?  // Información de vehículos
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+
+  propiedadId   String?
+  propiedad     Propiedad? @relation(fields: [propiedadId], references: [id])
+  
+  reservas      Reserva[]
+  pagosGastos   PagoGastoComun[]
+}
+
+// ============================================
+// PERSONAL / EMPLEADOS
+// ============================================
+model Personal {
+  id            String   @id @default(cuid())
+  nombre        String
+  rut           String?
+  cargo         String?
+  contrato      String   @default("Indefinido") // Indefinido, Plazo Fijo, Por Obra, Part-Time
+  afp           String   @default("ProVida")
+  salud         String   @default("Fonasa")
+  mutual        String   @default("IST")
+  ccaf          String?
+  fechaIngreso  String?
+  sueldoBase    Float    @default(0)
+  movilizacion  Float    @default(0)
+  colacion      Float    @default(0)
+  viatico       Float    @default(0)
+  asigFamiliar  Float    @default(0)
+  estado        String   @default("Activo") // Activo, Vacaciones, Licencia, Inactivo
+  email         String?
+  telefono      String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+
+  activos       Activo[] @relation("ActivoAsignado")
+  otPersonal    OrdenTrabajo[] @relation("OTPersonal")
+  asistencias   Asistencia[]
+}
+
+// ============================================
+// ACTIVOS / INVENTARIO
+// ============================================
+model Activo {
+  id            String   @id @default(cuid())
+  nombre        String
+  categoria     String   @default("Equipo") // Equipo, Herramienta, Vehículo, Mobiliario, Infraestructura, Tecnología
+  estado        String   @default("Activo") // Activo, Inactivo, En Reparación, Dado de Baja
+  ubicacion     String?
+  serie         String?
+  fechaCompra   String?
+  costoCompra   Float    @default(0)
+  valorActual   Float    @default(0)
+  descripcion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+
+  asignadoId    String?
+  asignado      Personal? @relation("ActivoAsignado", fields: [asignadoId], references: [id])
+  otActivo      OrdenTrabajo[] @relation("OTActivo")
+}
+
+// ============================================
+// PROVEEDORES
+// ============================================
+model Proveedor {
+  id             String   @id @default(cuid())
+  razonSocial    String
+  rut            String?
+  giro           String?
+  direccion      String?
+  comuna         String?
+  telCorp        String?
+  emailCorp      String?
+  web            String?
+  contacto       String?
+  cargo          String?
+  telDirecto     String?
+  emailContacto  String?
+  celular        String?
+  estado         String   @default("Activo") // Activo, Inactivo, En revisión
+  notas          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId   String?
+  condominio     Condominio? @relation(fields: [condominioId], references: [id])
+
+  gastos         Gasto[]
+}
+
+// ============================================
+// CENTROS DE COSTO (TABLA MAESTRA)
+// ============================================
+model CentroCostoMaster {
+  id              String   @id @default(cuid())
+  codigo          String   @unique // CC-ADM-01, CC-SEG-01, etc.
+  nombre          String
+  descripcion     String?
+  responsable     String?
+  tipoGasto       String   @default("Variable") // Fijo, Variable, Contrato, Estacional, Fondo de Reserva
+  presupuestoMens Float    @default(0)
+  presupuestoAnual Float   @default(0)
+  estado          String   @default("Activo") // Activo, Inactivo
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId    String?
+  condominio      Condominio? @relation(fields: [condominioId], references: [id])
+
+  tareas          CatTarea[]
+  materiales      CatMaterial[]
+  herramientas    CatHerramienta[]
+  ordenesTrabajo  OrdenTrabajo[]
+  gastos          Gasto[]
+}
+
+// ============================================
+// ÓRDENES DE TRABAJO
+// ============================================
+model OrdenTrabajo {
+  id              String   @id @default(cuid())
+  otNum           String   @unique
+  titulo          String
+  tipo            String   @default("Correctivo") // Correctivo, Preventivo, Mejora, Emergencia
+  prioridad       String   @default("Media") // Urgente, Alta, Media, Baja
+  estado          String   @default("Pendiente") // Pendiente, En Progreso, Completado, Cancelado
+  ubicacion       String?
+  fechaInicio     String?
+  fechaLimite     String?
+  fechaInicioReal String?  // Fecha real de inicio
+  fechaFinReal    String?  // Fecha real de término
+  costoEstimado   Float    @default(0)
+  costoReal       Float    @default(0)
+  progreso        Int      @default(0)
+  descripcion     String?
+  tiempoEst       Int      @default(0)  // Tiempo estimado en minutos
+  tiempoReal      Int      @default(0)  // Tiempo real en minutos
+  valorHora       Float    @default(0)  // Valor hora calculado
+  notas           String?
+  
+  // Campos para tareas recurrentes
+  esRecurrente    Boolean  @default(false)
+  tareaOrigenId   String?  // ID de la tarea del catálogo que generó esta OT
+  proximaEjecucion String? // Fecha de la próxima ejecución programada
+  
+  // Forma de pago / imputación
+  formaPago       String?  // Gasto Común Mensual, Fondo de Reserva, Gasto Extraordinario
+  
+  // Campos de aprobación
+  estadoAprobacion  String?  @default("Pendiente") // Pendiente, Aprobada, Rechazada
+  fechaSolicitudAprob String?  // Fecha en que se solicitó aprobación
+  fechaAprobacion   String?  // Fecha de aprobación/rechazo
+  aprobadoPor       String?  // ID del usuario que aprobó/rechazó
+  observacionesAprob String? // Observaciones del supervisor
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId    String?
+  condominio      Condominio? @relation(fields: [condominioId], references: [id])
+
+  propiedadId     String?
+  propiedad       Propiedad? @relation("OTPropiedad", fields: [propiedadId], references: [id])
+  asignadoId      String?
+  asignado        Personal? @relation("OTPersonal", fields: [asignadoId], references: [id])
+  activoId        String?
+  activo          Activo? @relation("OTActivo", fields: [activoId], references: [id])
+  
+  // Relación con Centro de Costo
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+
+  materiales      OTMaterial[]
+  herramientas    OTHerramienta[]
+  tareas          OTTarea[]
+  personalOT      OTPersonal[]
+  documentos      OTDocumento[]
+  historialAprobaciones HistorialAprobacionOT[]
+}
+
+model OTMaterial {
+  id            String   @id @default(cuid())
+  descripcion   String
+  cantidad      Float    @default(1)
+  precioUnit    Float    @default(0)
+  total         Float    @default(0)
+  unidad        String   @default("unidad")
+  otId          String
+  ot            OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTHerramienta {
+  id        String   @id @default(cuid())
+  nombre    String
+  cantidad  Int      @default(1)
+  otId      String
+  ot        OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTTarea {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Int      @default(1)
+  estado      String   @default("Pendiente") // Pendiente, En Progreso, Completado
+  otId        String
+  ot          OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTPersonal {
+  id              String   @id @default(cuid())
+  nombre          String
+  tipo            String   @default("Interno") // Interno, Externo
+  cantidad        Int      @default(1)
+  precioUnit      Float    @default(0)  // Valor hora del personal
+  horasTrabajadas Float    @default(0)  // Horas trabajadas
+  total           Float    @default(0)  // precioUnit * horasTrabajadas * cantidad
+  cumple          Boolean? // Si cumplió la tarea
+  observaciones   String?
+  otId            String
+  ot              OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTDocumento {
+  id        String   @id @default(cuid())
+  nombre    String
+  tipo      String   @default("documento")
+  archivo   String   // base64 or URL
+  otId      String
+  ot        OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// PROYECTOS
+// ============================================
+model Proyecto {
+  id            String   @id @default(cuid())
+  nombre        String
+  categoria     String   @default("General") // Áreas Verdes, Eléctrico, Sanitario, Infraestructura, Seguridad
+  estado        String   @default("Planificado") // Planificado, En Ejecución, Completado, Cancelado, Pausado
+  ubicacion     String?
+  fechaInicio   String?
+  fechaFin      String?
+  presProg      Float    @default(0) // Presupuesto Programado
+  presUsado     Float    @default(0) // Presupuesto Utilizado
+  avance        Int      @default(0)
+  descripcion   String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+
+  materiales    ProyectoMaterial[]
+  herramientas  ProyectoHerramienta[]
+  tareas        ProyectoTarea[]
+  personal      ProyectoPersonal[]
+}
+
+model ProyectoMaterial {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Float    @default(1)
+  precioUnit  Float    @default(0)
+  total       Float    @default(0)
+  unidad      String   @default("unidad")
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoHerramienta {
+  id          String   @id @default(cuid())
+  nombre      String
+  cantidad    Int      @default(1)
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoTarea {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Int      @default(1)
+  estado      String   @default("Pendiente")
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoPersonal {
+  id          String   @id @default(cuid())
+  nombre      String
+  tipo        String   @default("Interno")
+  cantidad    Int      @default(1)
+  precioUnit  Float    @default(0)
+  total       Float    @default(0)
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// INSPECCIONES
+// ============================================
+model Inspeccion {
+  id            String   @id @default(cuid())
+  titulo        String
+  tipo          String   @default("Mantenimiento") // Mantenimiento, Seguridad, Eléctrica, Sanitaria, Estructural, General
+  estado        String   @default("Planificado") // Planificado, En Progreso, Completado, Cancelado
+  fecha         String?
+  hora          String?
+  ubicacion     String?
+  asignado      String?
+  descripcion   String?
+  recurrente    Boolean  @default(false)
+  notas         String?
+  fotosAntes    String?  // JSON array
+  fotosDurante  String?  // JSON array
+  fotosDespues  String?  // JSON array
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+}
+
+// ============================================
+// GASTOS / RENDICIÓN
+// ============================================
+model Gasto {
+  id            String   @id @default(cuid())
+  descripcion   String
+  categoria     String   @default("Mantenimiento") // Mantenimiento, Administración, Seguridad, Áreas Verdes, etc.
+  estado        String   @default("Pendiente") // Pendiente, Pagado, Rechazado, En revisión
+  monto         Float    @default(0)
+  fecha         String?
+  propiedad     String?
+  proveedorId   String?
+  proveedor     Proveedor? @relation(fields: [proveedorId], references: [id])
+  nDoc          String?  // Número de documento
+  notas         String?
+  comprobante   String?  // base64 or URL
+  
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+  
+  // Relación con Centro de Costo
+  centroCostoId String?
+  centroCosto   CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// CAJA CHICA
+// ============================================
+model CajaChica {
+  id            String   @id @default(cuid())
+  saldo         Float    @default(0)
+  saldoInicial  Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// CATÁLOGOS MEJORADOS (con Centro de Costo)
+// ============================================
+model CatMaterial {
+  id            String   @id @default(cuid())
+  codigo        String?  @unique // MAT-ELEC-01, MAT-FONT-01, etc.
+  nombre        String
+  unidad        String   @default("unidad")
+  precioUnit    Float    @default(0)
+  categoria     String   @default("General") // Eléctrico, Fontanería, Ferretería, Pintura, Jardinería, Limpieza, Seguridad
+  stockMinimo   Int      @default(0)
+  stockActual   Int      @default(0)
+  ubicacion     String?
+  descripcion   String?
+  
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+  
+  // Centro de Costo de imputación
+  centroCostoId String?
+  centroCosto   CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model CatHerramienta {
+  id              String   @id @default(cuid())
+  codigo          String?  @unique // HERR-01, HERR-02, etc.
+  nombre          String
+  marca           String?
+  modelo          String?
+  cantidad        Int      @default(1)
+  ubicacion       String?
+  estado          String   @default("Bueno") // Bueno, Regular, Malo, En reparación
+  valorReposicion Float    @default(0)
+  fechaAdquisicion String?
+  descripcion     String?
+  
+  // Relación con Condominio
+  condominioId    String?
+  condominio      Condominio? @relation(fields: [condominioId], references: [id])
+  
+  // Centro de Costo de adquisición
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CatTarea {
+  id              String   @id @default(cuid())
+  codigo          String?  @unique // MT-ELEC-01, MT-HID-01, etc.
+  nombre          String
+  categoria       String   @default("General") // Eléctrico, Hidráulico, Ascensores, Gas, Climatización, Seguridad, Infraestructura, Áreas Verdes
+  sistema         String?  // Sistema al que pertenece
+  tipoMantencion  String   @default("Preventivo") // Preventivo, Correctivo, Predictivo, Legal
+  frecuencia      String?  // Diaria, Semanal, Mensual, Trimestral, Semestral, Anual
+  responsable     String?  // Responsable sugerido
+  tiempoEstimado  Int      @default(0) // Tiempo estimado en minutos
+  descripcion     String?
+  
+  // Relación con Condominio
+  condominioId    String?
+  condominio      Condominio? @relation(fields: [condominioId], references: [id])
+  
+  // Centro de Costo asociado
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  // Campos para tareas recurrentes
+  esRecurrente    Boolean  @default(false)
+  activa          Boolean  @default(true) // Si la tarea está activa para generar OTs
+  proximaEjecucion String? // Fecha de la próxima ejecución programada
+  ultimaEjecucion String? // Fecha de la última ejecución
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ============================================
+// RESERVAS (ESPACIOS COMUNES)
+// ============================================
+model Reserva {
+  id            String   @id @default(cuid())
+  titulo        String
+  espacio       String   // Quincho, Sala de Eventos, Piscina, Estacionamiento, Cancha, Gimnasio, etc.
+  fecha         String   // Fecha de la reserva
+  horaInicio    String   // Hora de inicio
+  horaFin       String   // Hora de término
+  residente     String   // Nombre del residente
+  unidad        String?  // Unidad del residente
+  telefono      String?  // Teléfono de contacto
+  email         String?  // Email de contacto
+  numPersonas   Int      @default(1)  // Número de personas
+  estado        String   @default("Pendiente") // Pendiente, Confirmada, Cancelada, Completada
+  monto         Float    @default(0)  // Monto de la reserva
+  pagado        Boolean  @default(false)
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+  
+  residenteId   String?
+  residenteRel  Residente? @relation(fields: [residenteId], references: [id])
+}
+
+// ============================================
+// CONFIGURACIÓN DEL SISTEMA
+// ============================================
+model Configuracion {
+  id            String   @id @default(cuid())
+  clave         String   @unique
+  valor         String
+  descripcion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// GASTOS COMUNES
+// ============================================
+model GastoComun {
+  id              String   @id @default(cuid())
+  periodo         String   // Formato: "2024-01"
+  fechaEmision    String
+  fechaVencimiento String
+  estado          String   @default("Pendiente") // Pendiente, Pagado, Vencido, Parcial
+  totalGastos     Float    @default(0)
+  totalCobrar     Float    @default(0)
+  montoPorUnidad  Float    @default(0)
+  notas           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relación con Condominio
+  condominioId    String?
+  condominio      Condominio? @relation(fields: [condominioId], references: [id])
+
+  detalles        DetalleGastoComun[]
+  pagos           PagoGastoComun[]
+}
+
+model DetalleGastoComun {
+  id            String   @id @default(cuid())
+  concepto      String
+  categoria     String   @default("General") // Personal, Servicios, Mantenimiento, Administración, etc.
+  monto         Float    @default(0)
+  centroCosto   String?
+  notas         String?
+  gastoComunId  String
+  gastoComun    GastoComun @relation(fields: [gastoComunId], references: [id], onDelete: Cascade)
+}
+
+model PagoGastoComun {
+  id            String   @id @default(cuid())
+  monto         Float    @default(0)
+  fechaPago     String
+  metodo        String   @default("Efectivo") // Efectivo, Transferencia, Cheque, Tarjeta
+  referencia    String?  // Número de comprobante o referencia
+  estado        String   @default("Pagado") // Pagado, Pendiente, Rechazado
+  notas         String?
+  
+  residenteId   String?
+  residente     Residente? @relation(fields: [residenteId], references: [id])
+  gastoComunId  String
+  gastoComun    GastoComun @relation(fields: [gastoComunId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// NOTIFICACIONES
+// ============================================
+model Notificacion {
+  id            String   @id @default(cuid())
+  titulo        String
+  mensaje       String
+  tipo          String   @default("Info") // Info, Alerta, Urgente, Recordatorio
+  categoria     String   @default("General") // General, OT, Pago, Reserva, Morosidad
+  destino       String   @default("Todos") // Todos, Residentes, Personal, Usuario específico
+  destinoId     String?  // ID específico si aplica
+  leido         Boolean  @default(false)
+  fechaEnvio    String?
+  fechaLeido    String?
+  
+  // Relación con Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// ASISTENCIA
+// ============================================
+model Asistencia {
+  id            String   @id @default(cuid())
+  personalId    String
+  personal      Personal  @relation(fields: [personalId], references: [id])
+  fecha         String    // Fecha de la asistencia
+  horaEntrada   String?   // Hora de entrada
+  horaSalida    String?   // Hora de salida
+  estado        String    @default("Pendiente") // Pendiente, Presente, Ausente, Tarde, Permiso
+  observaciones String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([personalId, fecha]) // Una asistencia por personal por día
+}
+
+// ============================================
+// CONTABILIDAD
+// ============================================
+model CuentaContable {
+  id            String   @id @default(cuid())
+  codigo        String   @unique
+  nombre        String
+  tipo          String   @default("Cuenta") // Activo, Pasivo, Patrimonio, Ingreso, Gasto
+  nivel         Int      @default(1)
+  padreId       String?
+  padre         CuentaContable? @relation("CuentaJerarquia", fields: [padreId], references: [id])
+  hijos         CuentaContable[] @relation("CuentaJerarquia")
+  saldo         Float    @default(0)
+  estado        String   @default("Activa")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  detalles      DetalleAsiento[]
+}
+
+model AsientoContable {
+  id            String   @id @default(cuid())
+  numero        String   @unique
+  fecha         String
+  glosa         String
+  tipo          String   @default("Normal") // Normal, Apertura, Cierre, Ajuste
+  estado        String   @default("Pendiente") // Pendiente, Aprobado, Anulado
+  totalDebe     Float    @default(0)
+  totalHaber    Float    @default(0)
+  documento     String?  // Referencia a documento (OT, Gasto, Pago, etc.)
+  documentoId   String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  detalles      DetalleAsiento[]
+}
+
+model DetalleAsiento {
+  id              String   @id @default(cuid())
+  glosa           String?
+  debe            Float    @default(0)
+  haber           Float    @default(0)
+  
+  cuentaId        String
+  cuenta          CuentaContable @relation(fields: [cuentaId], references: [id])
+  asientoId       String
+  asiento         AsientoContable @relation(fields: [asientoId], references: [id], onDelete: Cascade)
+  
+  createdAt       DateTime @default(now())
+}
+
+// ============================================
+// HISTORIAL DE APROBACIONES OT
+// ============================================
+model HistorialAprobacionOT {
+  id              String   @id @default(cuid())
+  otId            String
+  ordenTrabajo    OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+  estadoAnterior  String?  // Estado anterior
+  estadoNuevo     String   // Nuevo estado (Aprobada, Rechazada)
+  observaciones   String?  // Observaciones del supervisor
+  aprobadoPor     String?  // ID del usuario que realizó la acción
+  nombreAprobador String?  // Nombre del usuario que aprobó
+  fechaAccion     String   // Fecha de la acción
+  
+  createdAt       DateTime @default(now())
+}
+
+// ============================================
+// CUMPLIMIENTO LEGAL (LEY 21.442)
+// ============================================
+model Cumplimiento {
+  id                String   @id @default(cuid())
+  titulo            String
+  categoria         String   @default("Legal") // Legal, Seguridad, Reglamentario, Interno, Financiero
+  subcategoria      String?  // Actas, Reglamentos, Contratos, Seguros, etc.
+  descripcion       String?
+  obligatorio       Boolean  @default(true)   // Si es obligatorio por ley
+  fechaVencimiento  String?  // Fecha de vencimiento del documento
+  fechaRecordatorio String?  // Fecha para recordar antes del vencimiento
+  estado            String   @default("Pendiente") // Pendiente, En Proceso, Completado, Vencido
+  documentoUrl      String?  // URL o base64 del documento adjunto
+  documentoNombre   String?  // Nombre original del archivo
+  notas             String?
+  cumplimientoPorc  Int      @default(0)      // Porcentaje de cumplimiento (0-100)
+  
+  // Relación con Condominio
+  condominioId      String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  historial         HistorialCumplimiento[]
+}
+
+model HistorialCumplimiento {
+  id              String   @id @default(cuid())
+  cumplimientoId  String
+  cumplimiento    Cumplimiento @relation(fields: [cumplimientoId], references: [id], onDelete: Cascade)
+  accion          String   // Creación, Actualización, Documento Adjunto, Cambio Estado
+  descripcion     String
+  usuarioId       String?
+  usuarioNombre   String?
+  fecha           String
+  
+  createdAt       DateTime @default(now())
+}
+
+// ============================================
+// AUDITORÍA
+// ============================================
+model Auditoria {
+  id                String   @id @default(cuid())
+  codigo            String   @unique // AUD-2024-001
+  titulo            String
+  tipo              String   @default("Interna") // Interna, Externa, Legal, Financiera, Operacional
+  categoria         String   @default("General") // General, Financiera, Legal, Seguridad, Mantenimiento, Gestión
+  estado            String   @default("Planificada") // Planificada, En Ejecución, Completada, Cancelada
+  fechaInicio       String?
+  fechaFin          String?
+  fechaInforme      String?
+  alcance           String?  // Descripción del alcance de la auditoría
+  objetivo          String?  // Objetivo de la auditoría
+  responsable       String?  // Auditor responsable
+  equipoAuditor     String?  // JSON array de auditores
+  conclusiones      String?  // Conclusiones generales
+  recomendaciones   String?  // Recomendaciones generales
+  documentoInforme  String?  // URL o base64 del informe
+  documentoNombre   String?  // Nombre del archivo
+  notas             String?
+  
+  // Puntuación general
+  puntuacionTotal   Int      @default(0)  // 0-100
+  itemsCriticos     Int      @default(0)
+  itemsMayores      Int      @default(0)
+  itemsMenores      Int      @default(0)
+  
+  // Relación con Condominio
+  condominioId      String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relaciones
+  items             AuditoriaItem[]
+  hallazgos         AuditoriaHallazgo[]
+  acciones          AuditoriaAccion[]
+}
+
+model AuditoriaItem {
+  id                String   @id @default(cuid())
+  auditoriaId       String
+  auditoria         Auditoria @relation(fields: [auditoriaId], references: [id], onDelete: Cascade)
+  
+  seccion           String   // Sección del checklist
+  pregunta          String   // Punto de verificación
+  descripcion       String?  // Detalle del punto
+  obligatorio       Boolean  @default(true)
+  orden             Int      @default(0)
+  
+  // Evaluación
+  cumple            Boolean? // true=Conforme, false=No Conforme, null=No Aplica
+  evidencia         String?  // Evidencia observada
+  observaciones     String?  // Observaciones del auditor
+  calificacion      String?  @default("N/A") // Conforme, No Conforme, No Aplica, Pendiente
+  criticidad        String?  @default("Menor") // Crítica, Mayor, Menor
+  
+  // Documentación
+  documentoUrl      String?
+  documentoNombre   String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model AuditoriaHallazgo {
+  id                String   @id @default(cuid())
+  auditoriaId       String
+  auditoria         Auditoria @relation(fields: [auditoriaId], references: [id], onDelete: Cascade)
+  
+  codigo            String   // H-001, H-002, etc.
+  titulo            String
+  descripcion       String   // Descripción detallada del hallazgo
+  tipo              String   @default("Observación") // Observación, No Conformidad, No Conformidad Mayor
+  criticidad        String   @default("Menor") // Crítica, Mayor, Menor
+  area              String?  // Área afectada
+  proceso           String?  // Proceso afectado
+  
+  // Análisis
+  causaRaiz         String?  // Análisis de causa raíz
+  impacto           String?  // Impacto potencial
+  
+  // Estado
+  estado            String   @default("Abierto") // Abierto, En Análisis, Acción Definida, Cerrado
+  fechaDeteccion    String
+  fechaLimite       String?  // Fecha límite para resolver
+  
+  // Evidencia
+  evidencia         String?  // Evidencia documental
+  documentoUrl      String?
+  documentoNombre   String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relación con acciones
+  acciones          AuditoriaAccion[]
+}
+
+model AuditoriaAccion {
+  id                String   @id @default(cuid())
+  auditoriaId       String?
+  auditoria         Auditoria? @relation(fields: [auditoriaId], references: [id], onDelete: SetNull)
+  hallazgoId        String?
+  hallazgo          AuditoriaHallazgo? @relation(fields: [hallazgoId], references: [id], onDelete: SetNull)
+  
+  codigo            String   // AC-001, AP-001
+  titulo            String
+  descripcion       String
+  tipo              String   @default("Correctiva") // Correctiva, Preventiva, Mejora
+  responsable       String?  // Responsable de la acción
+  fechaCompromiso   String?  // Fecha comprometida
+  fechaImplementacion String? // Fecha real de implementación
+  estado            String   @default("Pendiente") // Pendiente, En Progreso, Implementada, Verificada, Cerrada
+  
+  // Verificación
+  verificadoPor     String?  // Quién verificó
+  fechaVerificacion String?
+  resultadoVerificacion String? // Efectiva, No Efectiva, Parcial
+  evidencia         String?  // Evidencia de implementación
+  documentoUrl      String?
+  documentoNombre   String?
+  
+  notas             String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// ============================================
+// RONDAS Y CONTROL DE ACCESO
+// ============================================
+model PuntoRonda {
+  id            String   @id @default(cuid())
+  nombre        String   // Nombre del punto de control
+  ubicacion     String   // Ubicación física
+  descripcion   String?
+  codigoQr      String   @unique // Código QR único
+  activo        Boolean  @default(true)
+  orden         Int      @default(0) // Orden de la ruta
+  
+  // Condominio
+  condominioId  String?
+  condominio    Condominio? @relation(fields: [condominioId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  registros     RegistroRonda[]
+}
+
+model RegistroRonda {
+  id            String   @id @default(cuid())
+  puntoId       String
+  punto         PuntoRonda @relation(fields: [puntoId], references: [id])
+  
+  // Usuario que escaneó
+  usuarioId     String?
+  usuarioNombre String?  // Nombre del usuario
+  
+  // Datos del escaneo
+  fechaHora     DateTime @default(now())
+  ubicacion     String?  // Ubicación GPS si está disponible
+  observaciones String?
+  foto          String?  // Foto de respaldo en base64
+  
+  // Estado
+  estado        String   @default("Normal") // Normal, Incidencia, Alerta
+  notaIncidencia String? // Descripción si hay incidencia
+  
+  createdAt     DateTime @default(now())
+  
+  @@index([puntoId, fechaHora])
+  @@index([usuarioId])
+}

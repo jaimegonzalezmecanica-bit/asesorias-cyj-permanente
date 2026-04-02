@@ -1,0 +1,109 @@
+[ot-scheduler] Installing dependencies...
+bun install v1.3.10 (30e609e0)
+No packages! Deleted empty lockfile
+
+[2.00ms] done
+[ot-scheduler] Running bun run dev...
+$ bun --hot index.ts
+🚀 OT Scheduler running on port 3010
+   Health check: http://localhost:3010/health
+   Manual run: http://localhost:3010/run
+   List tasks: http://localhost:3010/tasks
+
+[2026-03-22T10:06:06.804Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T11:06:06.821Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T12:06:06.846Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T13:06:06.852Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T14:06:06.869Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T15:06:06.890Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T16:06:06.911Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T17:06:06.914Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T18:06:06.935Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T19:06:06.959Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T20:06:06.961Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+
+✨ Scheduler complete. Created 0 new OTs.
+
+[2026-03-22T21:06:06.975Z] 🔍 Checking for recurrent tasks...
+📋 Found 19 recurrent tasks
+⏰ Task MT-ELEC-01 needs execution (Trimestral)
+✅ Created OT OT-1034 from task MT-ELEC-01
+⏰ Task MT-ELEC-02 needs execution (Anual)
+✅ Created OT OT-1035 from task MT-ELEC-02
+⏰ Task MT-ELEC-04 needs execution (Mensual)
+✅ Created OT OT-1036 from task MT-ELEC-04
+⏰ Task MT-ELEC-05 needs execution (Mensual)
+✅ Created OT OT-1037 from task MT-ELEC-05
+⏰ Task MT-HID-01 needs execution (Mensual)
+✅ Created OT OT-1038 from task MT-HID-01
+⏰ Task MT-HID-02 needs execution (Anual)
+✅ Created OT OT-1039 from task MT-HID-02
+⏰ Task MT-HID-03 needs execution (Mensual)
+✅ Created OT OT-1040 from task MT-HID-03
+⏰ Task MT-ASC-01 needs execution (Mensual)
+✅ Created OT OT-1041 from task MT-ASC-01
+⏰ Task MT-ASC-02 needs execution (Anual)
+✅ Created OT OT-1042 from task MT-ASC-02
+⏰ Task MT-GAS-01 needs execution (Trimestral)
+✅ Created OT OT-1043 from task MT-GAS-01
+⏰ Task MT-CLIM-01 needs execution (Semestral)
+✅ Created OT OT-1044 from task MT-CLIM-01
+⏰ Task MT-SEG-01 needs execution (Semanal)
+✅ Created OT OT-1045 from task MT-SEG-01
+⏰ Task MT-SEG-02 needs execution (Anual)
+✅ Created OT OT-1046 from task MT-SEG-02
+⏰ Task MT-INF-01 needs execution (Semestral)
+✅ Created OT OT-1047 from task MT-INF-01
+⏰ Task MT-ARV-01 needs execution (Mensual)
+✅ Created OT OT-1048 from task MT-ARV-01
+⏰ Task MT-PIS-01 needs execution (Diaria)
+✅ Created OT OT-1049 from task MT-PIS-01
+⏰ Task MT-PIS-02 needs execution (Semanal)
+✅ Created OT OT-1050 from task MT-PIS-02
+⏰ Task MT-GIM-01 needs execution (Mensual)
+✅ Created OT OT-1051 from task MT-GIM-01
+⏰ Task MT-ASE-01 needs execution (Diaria)
+✅ Created OT OT-1052 from task MT-ASE-01
+
+✨ Scheduler complete. Created 19 new OTs.

@@ -1,0 +1,288 @@
+================================================================================
+              GUÍA PASO A PASO - SISTEMA CYJ
+              Lee esto DESPUÉS de descargar el archivo
+================================================================================
+
+✅ Ya descargaste el archivo SISTEMA_CYJ_COMPLETO.zip
+
+Ahora sigue estos pasos EN ORDEN:
+
+
+================================================================================
+PASO 1: DESCOMPRIMIR EL ARCHIVO
+================================================================================
+
+1. Busca el archivo SISTEMA_CYJ_COMPLETO.zip en tu carpeta de descargas
+2. Haz clic DERECHO sobre el archivo
+3. Selecciona "Extraer todo" o "Descomprimir"
+4. Te creará una carpeta llamada "SISTEMA_CYJ_COMPLETO"
+5. Entra a esa carpeta
+6. Verás varios archivos, uno de ellos es: PARA_SUBIR_A_VERCEL.zip
+7. También descomprime PARA_SUBIR_A_VERCEL.zip
+8. Ahora tendrás TODOS los archivos del sistema
+
+📌 ANOTA ESTO: Guarda bien dónde descomprimiste los archivos
+
+
+================================================================================
+PASO 2: CREAR CUENTA EN GITHUB (si no tienes)
+================================================================================
+
+1. Abre tu navegador (Chrome, Firefox, Edge, etc.)
+2. En la barra de direcciones escribe: github.com
+3. Presiona ENTER
+4. Verás una página con un botón verde que dice "Sign up"
+5. Haz clic en "Sign up"
+6. Escribe tu correo electrónico
+7. Crea una contraseña (anótala para no olvidarla)
+8. Elige un nombre de usuario (ejemplo: tunombre123)
+9. Haz clic en "Create account"
+10. GitHub te enviará un código a tu correo
+11. Abre tu correo, copia el código
+12. Pega el código en GitHub
+13. Haz clic en "Verify email"
+14. ¡LISTO! Ya tienes cuenta en GitHub
+
+⏳ Tiempo estimado: 3-5 minutos
+
+
+================================================================================
+PASO 3: CREAR REPOSITORIO (CARPETA) EN GITHUB
+================================================================================
+
+1. En GitHub, arriba a la derecha, verás un signo "+" 
+2. Haz clic en el "+"
+3. Selecciona "New repository"
+4. En "Repository name" escribe: sistema-cyj
+5. Asegúrate que esté seleccionado "Public" (es gratis)
+6. Haz clic en el botón verde "Create repository"
+7. ¡LISTO! Ahora tienes un repositorio vacío
+
+⏳ Tiempo estimado: 1 minuto
+
+
+================================================================================
+PASO 4: SUBIR LOS ARCHIVOS A GITHUB
+================================================================================
+
+1. En tu repositorio "sistema-cyj", busca donde dice "uploading an existing file"
+   (O haz clic en "Add file" → "Upload files")
+
+2. Se abrirá una área para arrastrar archivos
+
+3. Abre la carpeta donde descomprimiste PARA_SUBIR_A_VERCEL
+
+4. Selecciona TODOS los archivos y carpetas:
+   📁 src (carpeta entera)
+   📁 prisma (carpeta entera)
+   📁 public (carpeta entera)
+   📄 package.json
+   📄 next.config.ts
+   📄 tsconfig.json
+   📄 tailwind.config.ts
+   📄 postcss.config.mjs
+   📄 components.json
+   📄 vercel.json
+   📄 .env.example
+
+5. Arrastra TODOS estos archivos al área de GitHub
+   (O haz clic en "choose your files" y selecciónalos)
+
+6. Espera que se suban (puede tardar 1-2 minutos)
+
+7. Abajo verás "Commit changes"
+8. En el cuadro de texto escribe: "Subiendo sistema CyJ"
+
+9. Haz clic en el botón verde "Commit changes"
+
+10. ¡LISTO! Tu código está en GitHub
+
+⏳ Tiempo estimado: 3-5 minutos
+
+
+================================================================================
+PASO 5: CREAR BASE DE DATOS GRATIS EN NEON
+================================================================================
+
+1. Abre una nueva pestaña en tu navegador
+2. Escribe: neon.tech
+3. Presiona ENTER
+4. Haz clic en "Sign up" (o "Start for free")
+5. Puedes registrarte con Google o GitHub (recomendado usar GitHub)
+6. Autoriza a Neon para acceder
+7. Después de registrarte, haz clic en "Create a project"
+8. En "Project name" escribe: cyj-database
+9. Haz clic en "Create project"
+
+10. ⚠️ MUY IMPORTANTE: Neon te mostrará algo como:
+
+    ┌────────────────────────────────────────────────────────────────┐
+    │ Connection string:                                             │
+    │ postgresql://abc123:xxxxx@ep-xyz.us-east-2.aws.neon.tech/...  │
+    │                                                    [Copy]      │
+    └────────────────────────────────────────────────────────────────┘
+
+11. ¡COPÍA ESTA URL! Haz clic en "Copy"
+12. Guárdala en un archivo de texto o anótala
+13. La necesitarás en el siguiente paso
+
+📌 Esta URL es tu DATABASE_URL
+📌 Es como la dirección de tu base de datos
+📌 ¡NO LA PIERDAS!
+
+⏳ Tiempo estimado: 3-5 minutos
+
+
+================================================================================
+PASO 6: CREAR CUENTA EN VERCEL
+================================================================================
+
+1. Abre una nueva pestaña en tu navegador
+2. Escribe: vercel.com
+3. Presiona ENTER
+4. Haz clic en "Sign Up"
+5. ⚠️ IMPORTANTE: Selecciona "Continue with GitHub"
+   (Así Vercel puede acceder a tu código automáticamente)
+6. Autoriza a Vercel para acceder a tu GitHub
+7. ¡LISTO! Ya tienes cuenta en Vercel conectada con GitHub
+
+⏳ Tiempo estimado: 2 minutos
+
+
+================================================================================
+PASO 7: IMPORTAR TU PROYECTO EN VERCEL
+================================================================================
+
+1. En Vercel, haz clic en "Add New..." (botón arriba)
+2. Selecciona "Project"
+3. Verás "Import Git Repository"
+4. Busca tu repositorio "sistema-cyj"
+5. Haz clic en "Import"
+
+6. Ahora verás la configuración del proyecto:
+   - Framework Preset: Debe decir "Next.js" (automático)
+   - Root Directory: ./ (dejar como está)
+
+⏳ Tiempo estimado: 2 minutos
+
+
+================================================================================
+PASO 8: CONFIGURAR VARIABLES DE ENTORNO (¡MUY IMPORTANTE!)
+================================================================================
+
+Antes de hacer deploy, necesitas agregar variables:
+
+1. En la misma pantalla de Vercel, busca "Environment Variables"
+2. Verás dos campos: "Key" y "Value"
+
+--- VARIABLE 1 ---
+
+3. En "Key" escribe: DATABASE_URL
+4. En "Value" pega la URL que copiaste de Neon
+   (La que parece: postgresql://usuario:contraseña@ep-xxx.neon.tech/...)
+5. Haz clic en "Add"
+
+--- VARIABLE 2 ---
+
+6. En "Key" escribe: NEXTAUTH_SECRET
+7. En "Value" escribe: cyj-sistema-secreto-2024-produccion-seguro
+8. Haz clic en "Add"
+
+--- VARIABLE 3 (opcional, puedes agregarla después) ---
+
+9. En "Key" escribe: NEXTAUTH_URL
+10. En "Value" déjalo vacío por ahora
+    (Lo agregarás después con la URL de tu sitio)
+
+⏳ Tiempo estimado: 2 minutos
+
+
+================================================================================
+PASO 9: HACER DEPLOY (PUBLICAR TU SISTEMA)
+================================================================================
+
+1. Ya configuraste las variables
+2. Haz clic en el botón azul grande que dice "Deploy"
+3. Vercel empezará a trabajar
+4. Verás una barra de progreso
+5. Espera 2-5 minutos
+6. Cuando termine verás:
+   - Un mensaje de "Congratulations!"
+   - Una URL como: https://sistema-cyj-abc123.vercel.app
+
+7. ¡LISTO! Tu sistema está en internet
+
+⏳ Tiempo estimado: 3-5 minutos
+
+
+================================================================================
+PASO 10: CREAR USUARIO ADMINISTRADOR
+================================================================================
+
+1. Copia tu URL (ejemplo: https://sistema-cyj-abc123.vercel.app)
+
+2. Agrega al final: /api/auth/init-admin
+   Quedará así: https://sistema-cyj-abc123.vercel.app/api/auth/init-admin
+
+3. Ve a esa dirección en tu navegador
+4. Verás un mensaje como: {"success":true,"message":"Admin creado"}
+
+5. Ahora ve a tu URL principal: https://sistema-cyj-abc123.vercel.app
+
+6. Inicia sesión con:
+   👤 Usuario: admin
+   🔑 Contraseña: admin123
+
+7. ⚠️ IMPORTANTE: Cambia la contraseña después de entrar
+   (Ve a Configuración → Usuarios → Editar admin)
+
+⏳ Tiempo estimado: 1 minuto
+
+
+================================================================================
+                      ¡FELICITACIONES! 
+================================================================================
+
+Tu sistema está funcionando en internet, GRATIS.
+
+RESUMEN DE TUS DATOS:
+- GitHub: github.com/tu-usuario/sistema-cyj
+- Base de datos: neon.tech (proyecto cyj-database)
+- Sistema: https://sistema-cyj-xxx.vercel.app
+
+================================================================================
+                      POSIBLES PROBLEMAS
+================================================================================
+
+PROBLEMA: "Build failed" en Vercel
+SOLUCIÓN: 
+- Verifica que subiste TODOS los archivos a GitHub
+- Verifica que DATABASE_URL está bien configurada
+
+PROBLEMA: "Cannot connect to database"
+SOLUCIÓN:
+- Ve a neon.tech y verifica que tu proyecto está activo
+- Verifica que la URL de conexión está completa
+
+PROBLEMA: No puedo iniciar sesión
+SOLUCIÓN:
+- Ve a /api/auth/init-admin para crear el usuario
+- Usuario: admin / Contraseña: admin123
+
+PROBLEMA: La página se ve mal o no carga
+SOLUCIÓN:
+- Espera unos minutos (a veces Vercel tarda en propagar cambios)
+- Recarga la página con Ctrl+F5
+
+================================================================================
+                      ¿NECESITAS AYUDA?
+================================================================================
+
+Si algo no funciona:
+
+1. Revisa que completaste CADA paso
+2. Verifica que la URL de Neon está correcta
+3. Verifica que las variables en Vercel están bien escritas
+4. Espera 5 minutos y vuelve a intentar
+
+================================================================================

@@ -1,0 +1,682 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ============================================
+// CONDOMINIOS (MULTI-CONDOMINIO)
+// ============================================
+model Condominio {
+  id            String   @id @default(cuid())
+  nombre        String
+  direccion     String?
+  comuna        String?
+  ciudad        String?
+  rut           String?
+  telefono      String?
+  email         String?
+  logo          String?
+  etapas        String?
+  estado        String   @default("Activo")
+  fechaInicio   String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  propiedades   Propiedad[]
+  residentes    Residente[]
+  personal      Personal[]
+  activos       Activo[]
+  ordenesTrabajo OrdenTrabajo[]
+  proyectos     Proyecto[]
+  inspecciones  Inspeccion[]
+  gastos        Gasto[]
+  proveedores   Proveedor[]
+  reservas      Reserva[]
+  gastosComunes GastoComun[]
+  notificaciones Notificacion[]
+  catMateriales CatMaterial[]
+  catHerramientas CatHerramienta[]
+  catTareas     CatTarea[]
+  centroCostos  CentroCostoMaster[]
+  puntosRonda   PuntoRonda[]
+  rondas        Ronda[]
+  usuarios      Usuario[]
+  vehiculos     Vehiculo[]
+  deudas        Deuda[]
+  estadosCuenta EstadoCuenta[]
+  cartasCobranza CartaCobranza[]
+  configMorosidad ConfigMorosidad[]
+  asistencias   Asistencia[]
+  comite        Comite[]
+  cumplimiento  Cumplimiento[]
+  auditoria     Auditoria[]
+  backups       Backup[]
+}
+
+// ============================================
+// USUARIOS Y AUTENTICACIÓN
+// ============================================
+model Usuario {
+  id            String    @id @default(cuid())
+  nombre        String
+  apellido      String?
+  email         String    @unique
+  password      String
+  rol           String    @default("Personal")
+  condominioId  String
+  condominio    Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  estado        String    @default("Activo")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sesiones      Session[]
+  registrosRonda RegistroRonda[]
+
+  @@index([condominioId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         Usuario  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ============================================
+// PROPIEDADES Y RESIDENTES
+// ============================================
+model Propiedad {
+  id           String    @id @default(cuid())
+  numero       String
+  bloque       String?
+  piso         String?
+  etapa        String?
+  tipo         String    @default("Departamento")
+  area         Float?
+  estado       String    @default("Ocupado")
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+model Residente {
+  id           String    @id @default(cuid())
+  nombre       String
+  apellido     String?
+  rut          String?
+  unidad       String
+  etapa        String?
+  tipo         String    @default("Propietario")
+  telefono     String?
+  email        String?
+  fechaIngreso DateTime? @default(now())
+  estado       String    @default("Activo")
+  vehiculos    String?
+  notas        String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  reservas     Reserva[]
+  deudas       Deuda[]
+  estadosCuenta EstadoCuenta[]
+  cartasCobranza CartaCobranza[]
+  asistencias  Asistencia[]
+
+  @@index([condominioId])
+}
+
+// ============================================
+// VEHÍCULOS
+// ============================================
+model Vehiculo {
+  id                String    @id @default(cuid())
+  patente           String    @unique
+  marca             String
+  modelo            String
+  anio              Int
+  color             String?
+  tipo              String    @default("Auto")
+  propietario       String
+  telefono          String?
+  email             String?
+  permisoCirculacion String?
+  permisoVencimiento DateTime?
+  seguroObligatorio String?
+  seguroVencimiento DateTime?
+  revisionTecnica   String?
+  revisionVencimiento DateTime?
+  estado            String    @default("Activo")
+  notas             String?
+  condominioId      String
+  condominio        Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// PERSONAL
+// ============================================
+model Personal {
+  id           String    @id @default(cuid())
+  nombre       String
+  apellido     String?
+  rut          String?   @unique
+  cargo        String
+  telefono     String?
+  email        String?
+  foto         String?
+  estado       String    @default("Activo")
+  fechaIngreso DateTime? @default(now())
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// ACTIVOS
+// ============================================
+model Activo {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  categoria    String
+  ubicacion    String?
+  estado       String    @default("Activo")
+  valor        Float     @default(0)
+  fechaAdquisicion DateTime?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// ÓRDENES DE TRABAJO
+// ============================================
+model OrdenTrabajo {
+  id           String    @id @default(cuid())
+  otNum        String    @unique
+  titulo       String
+  tipo         String    @default("Correctiva")
+  prioridad    String    @default("Media")
+  estado       String    @default("Abierta")
+  estadoAprob  String    @default("Pendiente")
+  ubicacion    String?
+  fechaInicio  DateTime? @default(now())
+  fechaLimite  DateTime?
+  costoEstimado Float    @default(0)
+  costoReal    Float     @default(0)
+  progreso     Int       @default(0)
+  descripcion  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// PROYECTOS
+// ============================================
+model Proyecto {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  estado       String    @default("Planificación")
+  fechaInicio  DateTime?
+  fechaFin     DateTime?
+  presupuesto  Float     @default(0)
+  gastoReal    Float     @default(0)
+  responsable  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// INSPECCIONES
+// ============================================
+model Inspeccion {
+  id           String    @id @default(cuid())
+  titulo       String
+  tipo         String
+  estado       String    @default("Pendiente")
+  fecha        DateTime  @default(now())
+  inspector    String?
+  observaciones String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// GASTOS
+// ============================================
+model Gasto {
+  id           String    @id @default(cuid())
+  descripcion  String
+  categoria    String
+  monto        Float
+  fecha        DateTime  @default(now())
+  estado       String    @default("Pendiente")
+  comprobante  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// PROVEEDORES
+// ============================================
+model Proveedor {
+  id           String    @id @default(cuid())
+  nombre       String
+  rut          String?   @unique
+  contacto     String?
+  telefono     String?
+  email        String?
+  direccion    String?
+  estado       String    @default("Activo")
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// RESERVAS
+// ============================================
+model Reserva {
+  id           String    @id @default(cuid())
+  titulo       String
+  espacio      String
+  fecha        String
+  horaInicio   String
+  horaFin      String
+  residenteId  String?
+  residente    Residente? @relation(fields: [residenteId], references: [id])
+  numPersonas  Int       @default(1)
+  estado       String    @default("Pendiente")
+  monto        Float     @default(0)
+  pagado       Boolean   @default(false)
+  notas        String?
+  comprobante  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+  @@index([residenteId])
+}
+
+// ============================================
+// GASTOS COMUNES
+// ============================================
+model GastoComun {
+  id           String    @id @default(cuid())
+  periodo      String
+  descripcion  String
+  monto        Float
+  estado       String    @default("Vigente")
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// NOTIFICACIONES
+// ============================================
+model Notificacion {
+  id           String    @id @default(cuid())
+  titulo       String
+  contenido    String
+  tipo         String    @default("General")
+  estado       String    @default("No leída")
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// CATÁLOGOS
+// ============================================
+model CatMaterial {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  unidad       String    @default("Unidad")
+  precio       Float     @default(0)
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+model CatHerramienta {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  tipo         String
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+model CatTarea {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  duracionEstimada Int?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// CENTROS DE COSTO
+// ============================================
+model CentroCostoMaster {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  presupuesto  Float     @default(0)
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// RONDAS DE VIGILANCIA
+// ============================================
+model PuntoRonda {
+  id           String    @id @default(cuid())
+  nombre       String
+  ubicacion    String?
+  descripcion  String?
+  qrCode       String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  registros    RegistroRonda[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+model Ronda {
+  id           String    @id @default(cuid())
+  fecha        DateTime  @default(now())
+  estado       String    @default("Pendiente")
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  registros    RegistroRonda[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+model RegistroRonda {
+  id           String    @id @default(cuid())
+  rondaId      String
+  ronda        Ronda     @relation(fields: [rondaId], references: [id], onDelete: Cascade)
+  usuarioId    String
+  usuario      Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  puntoId      String
+  punto        PuntoRonda @relation(fields: [puntoId], references: [id])
+  timestamp    DateTime  @default(now())
+  observaciones String?
+  createdAt    DateTime  @default(now())
+
+  @@index([rondaId])
+  @@index([usuarioId])
+  @@index([puntoId])
+}
+
+// ============================================
+// MOROSIDAD
+// ============================================
+model Deuda {
+  id           String    @id @default(cuid())
+  tipo         String    @default("GastoComun")
+  periodo      String
+  concepto     String
+  montoOriginal Float
+  montoInteres Float     @default(0)
+  montoTotal   Float
+  diasMora     Int       @default(0)
+  estado       String    @default("Pendiente")
+  fechaVencimiento DateTime?
+  notas        String?
+  residenteId  String?
+  residente    Residente? @relation(fields: [residenteId], references: [id])
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+  @@index([residenteId])
+}
+
+model EstadoCuenta {
+  id           String    @id @default(cuid())
+  periodo      String
+  fechaGeneracion DateTime @default(now())
+  saldoAnterior Float
+  cargosMes    Float
+  pagosMes     Float
+  saldoActual  Float
+  interesesMora Float
+  totalPagar   Float
+  fechaVencimiento DateTime?
+  estado       String    @default("Generado")
+  residenteId  String?
+  residente    Residente? @relation(fields: [residenteId], references: [id])
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+  @@index([residenteId])
+}
+
+model CartaCobranza {
+  id           String    @id @default(cuid())
+  tipo         String    @default("Recordatorio")
+  numeroCarta  Int
+  asunto       String
+  contenido    String
+  fechaEnvio   DateTime?
+  fechaGeneracion DateTime @default(now())
+  metodoEnvio  String    @default("Email")
+  estado       String    @default("Generada")
+  residenteId  String?
+  residente    Residente? @relation(fields: [residenteId], references: [id])
+  archivoPdf   String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+  @@index([residenteId])
+}
+
+model ConfigMorosidad {
+  id           String    @id @default(cuid())
+  tasaInteresMensual Float @default(1.5)
+  tasaInteresDiario Float @default(0.05)
+  diasGracia   Int       @default(10)
+  maxDiasMora  Int       @default(90)
+  montosCartas String?
+  plantillasCartas String?
+  activo       Boolean   @default(true)
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// ASISTENCIA
+// ============================================
+model Asistencia {
+  id           String    @id @default(cuid())
+  fecha        DateTime  @default(now())
+  estado       String    @default("Presente")
+  residenteId  String?
+  residente    Residente? @relation(fields: [residenteId], references: [id])
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+  @@index([residenteId])
+}
+
+// ============================================
+// COMITÉ
+// ============================================
+model Comite {
+  id           String    @id @default(cuid())
+  nombre       String
+  cargo        String
+  telefono     String?
+  email        String?
+  foto         String?
+  estado       String    @default("Activo")
+  fechaInicio  DateTime? @default(now())
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// CUMPLIMIENTO
+// ============================================
+model Cumplimiento {
+  id           String    @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  estado       String    @default("Pendiente")
+  fechaVencimiento DateTime?
+  responsable  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// AUDITORÍA
+// ============================================
+model Auditoria {
+  id           String    @id @default(cuid())
+  tipo         String
+  descripcion  String?
+  estado       String    @default("Pendiente")
+  auditor      String?
+  fechaAuditoria DateTime?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// BACKUPS
+// ============================================
+model Backup {
+  id           String    @id @default(cuid())
+  nombre       String
+  tipo         String    @default("Automático")
+  tamanio      String?
+  estado       String    @default("Completado")
+  urlDescarga  String?
+  condominioId String
+  condominio   Condominio @relation(fields: [condominioId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([condominioId])
+}
+
+// ============================================
+// PORTAL DE RESIDENTES (SOLICITUDES)
+// ============================================
+model Solicitud {
+  id           String    @id @default(cuid())
+  titulo       String
+  descripcion  String?
+  tipo         String    @default("General")
+  estado       String    @default("Pendiente")
+  prioridad    String    @default("Normal")
+  archivos     String?   // JSON array de URLs
+  respuesta    String?
+  fechaRespuesta DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}

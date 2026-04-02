@@ -1,0 +1,54 @@
+# Terminal Full Output
+# Terminal: sh1-2
+# Command: npm install xlsx
+# PID: 17343
+# Timestamp: 2026-03-24_23-22-53.019551
+# Original Length: 7255 characters
+# ----------------------------------------
+
+[1mnpm[22m [33mwarn[39m [94mtar[39m ENOENT: Cannot cd into '/home/ubuntu/node_modules/typescript'
+[1mnpm[22m [33mwarn[39m [94mtarball[39m tarball data for typescript@5.9.3 (sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==) seems to be corrupted. Trying again.
+[1mnpm[22m [33mwarn[39m [94mtar[39m ENOENT: Cannot cd into '/home/ubuntu/node_modules/typescript'
+[1mnpm[22m [33mwarn[39m [94mtarball[39m tarball data for typescript@5.9.3 (sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==) seems to be corrupted. Trying again.
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/eslint/conf/replacements.json'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/eslint/conf/rule-type-list.json'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/home/ubuntu/node_modules/date-fns/_lib/format'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/recharts/umd/Recharts.js.LICENSE.txt'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/framer-motion/client/README.md'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns/_lib/getRoundingMethod.cjs'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds.cjs'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2021/Number/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2022/BigInt/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2022/Number/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2023/BigInt/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2023/Number/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2024/BigInt/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2024/Number/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2025/BigInt/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/2025/Number/index.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/home/ubuntu/node_modules/date-fns/_lib/format'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns-jalali/_lib/format/formatters.d.cts'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/actual/regexp/escape.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/es/regexp/escape.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/features/regexp/escape.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/full/regexp/escape.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/home/ubuntu/node_modules/date-fns/_lib/format'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns-jalali/_lib/format/lightFormatters.d.cts'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/react-day-picker/src/style.module.css.d.ts'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns-jalali/_lib/format/longFormatters.d.cts'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/helpers/records/iterator-record-2023.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/es-abstract/helpers/records/iterator-record.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns/_lib/normalizeDates.cjs'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/date-fns/_lib/normalizeInterval.cjs'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/actual/array/virtual/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/actual/async-iterator/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/actual/iterator/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/es/array/virtual/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/es/iterator/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/features/array/virtual/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/features/async-iterator/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/features/iterator/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/features/set/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/full/array/virtual/every.js'
+[1mnpm[22m [33mwarn[39m [94mtar[39m TAR_ENTRY_ERROR ENOENT: no such file or directory, open '/home/ubuntu/node_modules/core-js/full/async-iterator/every.js'
+⠸

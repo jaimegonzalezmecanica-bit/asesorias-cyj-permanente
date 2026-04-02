@@ -1,0 +1,104 @@
+# Terminal Full Output
+# Terminal: sh1-2
+# Command: pnpm install xlsx
+# PID: 17343
+# Timestamp: 2026-03-24_23-22-31.643182
+# Original Length: 5809 characters
+# ----------------------------------------
+
+[43m[30m WARN [39m[49m Moving @tailwindcss/postcss that was installed by a different package manager to "node_modules/.ignored"
+[43m[30m WARN [39m[49m Moving @types/archiver that was installed by a different package manager to "node_modules/.ignored"
+[43m[30m WARN [39m[49m Moving @types/bcrypt that was installed by a different package manager to "node_modules/.ignored"
+[43m[30m WARN [39m[49m Moving @types/react that was installed by a different package manager to "node_modules/.ignored"
+[43m[30m WARN [39m[49m Moving @types/react-dom that was installed by a different package manager to "node_modules/.ignored"
+[43m[30m WARN [39m[49m 1 other warnings
+[1A[43m[30m WARN [39m[49m 2 other warnings
+[1A[43m[30m WARN [39m[49m 3 other warnings
+[1A[43m[30m WARN [39m[49m 4 other warnings
+[1A[43m[30m WARN [39m[49m 5 other warnings
+[1A[43m[30m WARN [39m[49m 6 other warnings
+[1A[43m[30m WARN [39m[49m 7 other warnings
+[1A[43m[30m WARN [39m[49m 8 other warnings
+[1A[43m[30m WARN [39m[49m 9 other warnings
+[1A[43m[30m WARN [39m[49m 10 other warnings
+[1A[43m[30m WARN [39m[49m 11 other warnings
+[1A[43m[30m WARN [39m[49m 12 other warnings
+[1A[43m[30m WARN [39m[49m 13 other warnings
+[1A[43m[30m WARN [39m[49m 14 other warnings
+[1A[43m[30m WARN [39m[49m 15 other warnings
+[1A[43m[30m WARN [39m[49m 16 other warnings
+[1A[43m[30m WARN [39m[49m 17 other warnings
+[1A[43m[30m WARN [39m[49m 18 other warnings
+[1A[43m[30m WARN [39m[49m 19 other warnings
+[1A[43m[30m WARN [39m[49m 20 other warnings
+[1A[43m[30m WARN [39m[49m 21 other warnings
+[1A[43m[30m WARN [39m[49m 22 other warnings
+[1A[43m[30m WARN [39m[49m 23 other warnings
+[1A[43m[30m WARN [39m[49m 24 other warnings
+[1A[43m[30m WARN [39m[49m 25 other warnings
+[1A[43m[30m WARN [39m[49m 26 other warnings
+[1A[43m[30m WARN [39m[49m 27 other warnings
+[1A[43m[30m WARN [39m[49m 28 other warnings
+[1A[43m[30m WARN [39m[49m 29 other warnings
+[1A[43m[30m WARN [39m[49m 30 other warnings
+[1A[43m[30m WARN [39m[49m 31 other warnings
+[1A[43m[30m WARN [39m[49m 32 other warnings
+[1A[43m[30m WARN [39m[49m 33 other warnings
+[1A[43m[30m WARN [39m[49m 34 other warnings
+[1A[43m[30m WARN [39m[49m 35 other warnings
+[1A[43m[30m WARN [39m[49m 36 other warnings
+[1A[43m[30m WARN [39m[49m 37 other warnings
+[1A[43m[30m WARN [39m[49m 38 other warnings
+[1A[43m[30m WARN [39m[49m 39 other warnings
+[1A[43m[30m WARN [39m[49m 40 other warnings
+[1A[43m[30m WARN [39m[49m 41 other warnings
+[1A[43m[30m WARN [39m[49m 42 other warnings
+[1A[43m[30m WARN [39m[49m 43 other warnings
+[1A[43m[30m WARN [39m[49m 44 other warnings
+[1A[43m[30m WARN [39m[49m 45 other warnings
+[1A[43m[30m WARN [39m[49m 46 other warnings
+[1A[43m[30m WARN [39m[49m 47 other warnings
+[1A[43m[30m WARN [39m[49m 48 other warnings
+[1A[43m[30m WARN [39m[49m 49 other warnings
+[1A[43m[30m WARN [39m[49m 50 other warnings
+[1A[43m[30m WARN [39m[49m 51 other warnings
+[1A[43m[30m WARN [39m[49m 52 other warnings
+[1A[43m[30m WARN [39m[49m 53 other warnings
+[1A[43m[30m WARN [39m[49m 54 other warnings
+[1A[43m[30m WARN [39m[49m 55 other warnings
+[1A[43m[30m WARN [39m[49m 56 other warnings
+[1A[43m[30m WARN [39m[49m 57 other warnings
+[1A[43m[30m WARN [39m[49m 58 other warnings
+[1A[43m[30m WARN [39m[49m 59 other warnings
+[1A[43m[30m WARN [39m[49m 60 other warnings
+[1A[43m[30m WARN [39m[49m 61 other warnings
+[1A[43m[30m WARN [39m[49m 62 other warnings
+[1A[43m[30m WARN [39m[49m 63 other warnings
+[1A[43m[30m WARN [39m[49m 64 other warnings
+[1A[43m[30m WARN [39m[49m 65 other warnings
+[1A[43m[30m WARN [39m[49m 66 other warnings
+[1A[43m[30m WARN [39m[49m 67 other warnings
+[1A[43m[30m WARN [39m[49m 68 other warnings
+[1A[43m[30m WARN [39m[49m 69 other warnings
+[1A[43m[30m WARN [39m[49m 70 other warnings
+[1A[43m[30m WARN [39m[49m 71 other warnings
+[1A[43m[30m WARN [39m[49m 72 other warnings
+[1A[43m[30m WARN [39m[49m 73 other warnings
+[1A[43m[30m WARN [39m[49m 74 other warnings
+[1A[43m[30m WARN [39m[49m 75 other warnings
+[1A[43m[30m WARN [39m[49m 76 other warnings
+[1A[43m[30m WARN [39m[49m 77 other warnings
+[1A[43m[30m WARN [39m[49m 78 other warnings
+[1A[43m[30m WARN [39m[49m 79 other warnings
+[41m[30m EACCES [39m[49m [31mEACCES: permission denied, rename '/home/ubuntu/node_modules/@radix-ui/react-aspect-ratio' -> '/home/ubuntu/node_modules/.ignored/@radix-ui/react-aspect-ratio'[39m
+pnpm: EACCES: permission denied, rename '/home/ubuntu/node_modules/@radix-ui/react-aspect-ratio' -> '/home/ubuntu/node_modules/.ignored/@radix-ui/react-aspect-ratio'
+    at async Object.rename (node:internal/fs/promises:783:10)
+    at async renameOverwrite (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:55074:9)
+    at async renameOverwrite (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:55120:13)
+    at async safeIsInnerLink (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:159606:11)
+    at async /home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:159707:29
+    at async Promise.all (index 19)
+    at async partitionLinkedPackages (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:159702:7)
+    at async toResolveImporter (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:159656:37)
+    at async Promise.all (index 0)
+    at async resolveDependencies (/home/ubuntu/.nvm/versions/node/v22.13.0/lib/node_modules/pnpm/dist/pnpm.cjs:160206:33)

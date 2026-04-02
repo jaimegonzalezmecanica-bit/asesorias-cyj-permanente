@@ -1,0 +1,709 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ============================================
+// USUARIOS Y AUTENTICACIÓN
+// ============================================
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  nombre        String
+  apellido      String?
+  password      String   // Hash de la contraseña (bcrypt)
+  rut           String?  @unique
+  
+  // Información de contacto encriptada
+  telefono      String?  // Encriptado
+  direccion     String?  // Encriptado
+  
+  // Rol y permisos
+  rol           String   @default("usuario") // admin, supervisor, usuario
+  permisos      String?  // JSON con permisos específicos
+  
+  // Estado
+  activo        Boolean  @default(true)
+  emailVerificado DateTime?
+  ultimoAcceso  DateTime?
+  
+  // Seguridad
+  intentosLogin Int      @default(0)
+  bloqueadoHasta DateTime?
+  twoFactorSecret String? // Para 2FA en el futuro
+  twoFactorEnabled Boolean @default(false)
+  
+  // Tokens
+  resetToken    String?
+  resetTokenExp DateTime?
+  
+  // Auditoría
+  creadoPor     String?  // ID del usuario que creó este usuario
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relaciones
+  sessions      Session[]
+  cuentas       Cuenta[]
+  logsAuditoria LogAuditoria[]
+}
+
+// ============================================
+// SESIONES DE USUARIO
+// ============================================
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token        String   @unique
+  userAgent    String?
+  ip           String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+}
+
+// ============================================
+// CUENTAS EXTERNAS (OAuth)
+// ============================================
+model Cuenta {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider     String   // google, facebook, etc.
+  providerId   String   // ID del proveedor
+  accessToken  String?
+  refreshToken String?
+  expiresAt    DateTime?
+  createdAt    DateTime @default(now())
+  
+  @@unique([provider, providerId])
+}
+
+// ============================================
+// LOGS DE AUDITORÍA
+// ============================================
+model LogAuditoria {
+  id          String   @id @default(cuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  accion      String   // login, logout, create, update, delete
+  entidad     String   // Nombre del modelo afectado
+  entidadId   String?  // ID del registro afectado
+  datosAntes  String?  // JSON con datos antes del cambio
+  datosDespues String? // JSON con datos después del cambio
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+}
+
+// ============================================
+// PROPIEDADES / UNIDADES
+// ============================================
+model Propiedad {
+  id           String   @id @default(cuid())
+  nombre       String
+  tipo         String   @default("Casa") // Casa, Departamento, Local Comercial, Bodega, Estacionamiento
+  estado       String   @default("Disponible") // Disponible, Ocupado, Arriendo, Venta, Mantenimiento, Reservado
+  direccion    String?
+  habitaciones Int      @default(0)
+  banos        Int      @default(0)
+  mts2         Float    @default(0)
+  precio       Float    @default(0)
+  contacto     String?
+  telefono     String?
+  email        String?
+  fotos        String?  // JSON array of base64 or URLs
+  notas        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  residentes   Residente[]
+  otPropiedad  OrdenTrabajo[] @relation("OTPropiedad")
+}
+
+// ============================================
+// RESIDENTES
+// ============================================
+model Residente {
+  id            String   @id @default(cuid())
+  nombre        String
+  rut           String?
+  unidad        String?
+  tipo          String   @default("Residente") // Residente, Propietario, Arrendatario, Visita
+  telefono      String?
+  email         String?
+  fechaIngreso  String?  // Date as string
+  estado        String   @default("Activo") // Activo, Moroso, Vacaciones, Licencia, Inactivo
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  propiedadId   String?
+  propiedad     Propiedad? @relation(fields: [propiedadId], references: [id])
+  
+  // Vehículos del residente
+  vehiculos     String?  // JSON con información de vehículos
+  
+  // Relación con reservas
+  reservas      Reserva[]
+}
+
+// ============================================
+// PERSONAL / EMPLEADOS
+// ============================================
+model Personal {
+  id            String   @id @default(cuid())
+  nombre        String
+  rut           String?
+  cargo         String?
+  contrato      String   @default("Indefinido") // Indefinido, Plazo Fijo, Por Obra, Part-Time
+  afp           String   @default("ProVida")
+  salud         String   @default("Fonasa")
+  mutual        String   @default("IST")
+  ccaf          String?
+  fechaIngreso  String?
+  sueldoBase    Float    @default(0)
+  movilizacion  Float    @default(0)
+  colacion      Float    @default(0)
+  viatico       Float    @default(0)
+  asigFamiliar  Float    @default(0)
+  estado        String   @default("Activo") // Activo, Vacaciones, Licencia, Inactivo
+  email         String?
+  telefono      String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  activos       Activo[] @relation("ActivoAsignado")
+  otPersonal    OrdenTrabajo[] @relation("OTPersonal")
+}
+
+// ============================================
+// ACTIVOS / INVENTARIO
+// ============================================
+model Activo {
+  id            String   @id @default(cuid())
+  nombre        String
+  categoria     String   @default("Equipo") // Equipo, Herramienta, Vehículo, Mobiliario, Infraestructura, Tecnología
+  estado        String   @default("Activo") // Activo, Inactivo, En Reparación, Dado de Baja
+  ubicacion     String?
+  serie         String?
+  fechaCompra   String?
+  costoCompra   Float    @default(0)
+  valorActual   Float    @default(0)
+  descripcion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  asignadoId    String?
+  asignado      Personal? @relation("ActivoAsignado", fields: [asignadoId], references: [id])
+  otActivo      OrdenTrabajo[] @relation("OTActivo")
+}
+
+// ============================================
+// PROVEEDORES
+// ============================================
+model Proveedor {
+  id             String   @id @default(cuid())
+  razonSocial    String
+  rut            String?
+  giro           String?
+  direccion      String?
+  comuna         String?
+  telCorp        String?
+  emailCorp      String?
+  web            String?
+  contacto       String?
+  cargo          String?
+  telDirecto     String?
+  emailContacto  String?
+  celular        String?
+  estado         String   @default("Activo") // Activo, Inactivo, En revisión
+  notas          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  gastos         Gasto[]
+}
+
+// ============================================
+// CENTROS DE COSTO (TABLA MAESTRA)
+// ============================================
+model CentroCostoMaster {
+  id              String   @id @default(cuid())
+  codigo          String   @unique // CC-ADM-01, CC-SEG-01, etc.
+  nombre          String
+  descripcion     String?
+  responsable     String?
+  tipoGasto       String   @default("Variable") // Fijo, Variable, Contrato, Estacional, Fondo de Reserva
+  presupuestoMens Float    @default(0)
+  presupuestoAnual Float   @default(0)
+  estado          String   @default("Activo") // Activo, Inactivo
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  tareas          CatTarea[]
+  materiales      CatMaterial[]
+  herramientas    CatHerramienta[]
+  ordenesTrabajo  OrdenTrabajo[]
+  gastos          Gasto[]
+}
+
+// ============================================
+// UBICACIONES (LISTADO MAESTRO)
+// ============================================
+model Ubicacion {
+  id          String   @id @default(cuid())
+  codigo      String   @unique // UB-001, UB-002, etc.
+  nombre      String
+  categoria   String   @default("General") // Edificio A, Edificio B, Estacionamiento, Áreas Comunes, etc.
+  descripcion String?
+  activo      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// ÓRDENES DE TRABAJO
+// ============================================
+model OrdenTrabajo {
+  id              String   @id @default(cuid())
+  otNum           String   @unique
+  titulo          String
+  tipo            String   @default("Correctivo") // Correctivo, Preventivo, Mejora, Emergencia
+  prioridad       String   @default("Media") // Urgente, Alta, Media, Baja
+  estado          String   @default("Pendiente") // Pendiente, En Progreso, Completado, Cancelado, Pendiente Aprobación
+  ubicacion       String?
+  ubicacionId     String?  // Relación con ubicación del listado maestro
+  fechaInicio     String?
+  fechaLimite     String?
+  fechaInicioReal String?  // Fecha real de inicio (automático)
+  fechaFinReal    String?  // Fecha real de término (automático)
+  horaInicioReal  String?  // Hora de inicio real
+  horaFinReal     String?  // Hora de fin real
+  costoEstimado   Float    @default(0)
+  costoReal       Float    @default(0)
+  progreso        Int      @default(0)
+  descripcion     String?
+  tiempoEst       Int      @default(0)  // Tiempo estimado en minutos
+  tiempoReal      Int      @default(0)  // Tiempo real en minutos (automático)
+  valorHora       Float    @default(0)  // Valor hora calculado
+  notas           String?
+  
+  // Campos para tareas recurrentes
+  esRecurrente    Boolean  @default(false)
+  tareaOrigenId   String?  // ID de la tarea del catálogo que generó esta OT
+  proximaEjecucion String? // Fecha de la próxima ejecución programada
+  
+  // Forma de pago / imputación
+  formaPago       String?  // Gasto Común Mensual, Fondo de Reserva, Gasto Extraordinario
+  
+  // Control de tiempo automático
+  fechaHoraInicio DateTime? // Timestamp exacto de inicio
+  fechaHoraFin    DateTime? // Timestamp exacto de fin
+  segundosTranscurridos Int @default(0) // Segundos totales de trabajo
+  
+  // Sistema de aprobación
+  pendienteAprobacion Boolean @default(false)
+  fechaSolicitudAprobacion DateTime?
+  fechaAprobacion    DateTime?
+  aprobadoPor        String?  // ID del supervisor que aprobó
+  observacionesAprobacion String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  propiedadId     String?
+  propiedad       Propiedad? @relation("OTPropiedad", fields: [propiedadId], references: [id])
+  asignadoId      String?
+  asignado        Personal? @relation("OTPersonal", fields: [asignadoId], references: [id])
+  activoId        String?
+  activo          Activo? @relation("OTActivo", fields: [activoId], references: [id])
+  
+  // Relación con Centro de Costo
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+
+  materiales      OTMaterial[]
+  herramientas    OTHerramienta[]
+  tareas          OTTarea[]
+  personalOT      OTPersonal[]
+  documentos      OTDocumento[]
+  aprobaciones    AprobacionOT[]
+}
+
+// ============================================
+// APROBACIONES DE OT (HISTORIAL)
+// ============================================
+model AprobacionOT {
+  id              String   @id @default(cuid())
+  otId            String
+  ot              OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+  
+  // Quién solicita la aprobación
+  solicitadoPor   String?  // ID del usuario que solicitó
+  fechaSolicitud  DateTime @default(now())
+  
+  // Quién aprueba
+  aprobadoPor     String?  // ID del supervisor
+  fechaAprobacion DateTime?
+  
+  // Tiempos de respuesta (solo visible para admin)
+  segundosRespuesta Int?   // Tiempo en segundos desde solicitud hasta aprobación
+  
+  // Estado
+  estado          String   @default("Pendiente") // Pendiente, Aprobado, Rechazado
+  observaciones   String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model OTMaterial {
+  id            String   @id @default(cuid())
+  descripcion   String
+  cantidad      Float    @default(1)
+  precioUnit    Float    @default(0)
+  total         Float    @default(0)
+  unidad        String   @default("unidad")
+  otId          String
+  ot            OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTHerramienta {
+  id        String   @id @default(cuid())
+  nombre    String
+  cantidad  Int      @default(1)
+  otId      String
+  ot        OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTTarea {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Int      @default(1)
+  estado      String   @default("Pendiente") // Pendiente, En Progreso, Completado
+  cumple      Boolean? // Si cumplió la tarea (para aprobación)
+  otId        String
+  ot          OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTPersonal {
+  id              String   @id @default(cuid())
+  nombre          String
+  tipo            String   @default("Interno") // Interno, Externo
+  cantidad        Int      @default(1)
+  precioUnit      Float    @default(0)  // Valor hora del personal
+  horasTrabajadas Float    @default(0)  // Horas trabajadas
+  total           Float    @default(0)  // precioUnit * horasTrabajadas * cantidad
+  cumple          Boolean? // Si cumplió la tarea
+  observaciones   String?
+  otId            String
+  ot              OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+model OTDocumento {
+  id        String   @id @default(cuid())
+  nombre    String
+  tipo      String   @default("documento")
+  archivo   String   // base64 or URL
+  otId      String
+  ot        OrdenTrabajo @relation(fields: [otId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// PROYECTOS
+// ============================================
+model Proyecto {
+  id            String   @id @default(cuid())
+  nombre        String
+  categoria     String   @default("General") // Áreas Verdes, Eléctrico, Sanitario, Infraestructura, Seguridad
+  estado        String   @default("Planificado") // Planificado, En Ejecución, Completado, Cancelado, Pausado
+  ubicacion     String?
+  fechaInicio   String?
+  fechaFin      String?
+  presProg      Float    @default(0) // Presupuesto Programado
+  presUsado     Float    @default(0) // Presupuesto Utilizado
+  avance        Int      @default(0)
+  descripcion   String?
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  materiales    ProyectoMaterial[]
+  herramientas  ProyectoHerramienta[]
+  tareas        ProyectoTarea[]
+  personal      ProyectoPersonal[]
+}
+
+model ProyectoMaterial {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Float    @default(1)
+  precioUnit  Float    @default(0)
+  total       Float    @default(0)
+  unidad      String   @default("unidad")
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoHerramienta {
+  id          String   @id @default(cuid())
+  nombre      String
+  cantidad    Int      @default(1)
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoTarea {
+  id          String   @id @default(cuid())
+  descripcion String
+  cantidad    Int      @default(1)
+  estado      String   @default("Pendiente")
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+model ProyectoPersonal {
+  id          String   @id @default(cuid())
+  nombre      String
+  tipo        String   @default("Interno")
+  cantidad    Int      @default(1)
+  precioUnit  Float    @default(0)
+  total       Float    @default(0)
+  proyectoId  String
+  proyecto    Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// INSPECCIONES
+// ============================================
+model Inspeccion {
+  id                String   @id @default(cuid())
+  titulo            String
+  tipo              String   @default("SST") // SST, Medio Ambiente, Seguridad, Orden y Aseo, Mantenimiento, Eléctrica, Sanitaria, Estructural
+  estado            String   @default("Planificado") // Planificado, En Progreso, Completado, Cancelado
+  fecha             String?
+  hora              String?
+  ubicacion         String?
+  asignado          String?
+  descripcion       String?
+  recurrente        Boolean  @default(false)
+  notas             String?
+  // Observaciones y recomendaciones (JSON array)
+  observaciones     String?  // JSON array: [{area, equipo, material, lugar, observacion}]
+  recomendaciones   String?  // JSON array: [{area, equipo, material, lugar, recomendacion}]
+  // Firmas (base64 o texto)
+  firmaInspector    String?
+  firmaSupervisor   String?
+  nombreInspector   String?
+  nombreSupervisor  String?
+  // Fotos
+  fotosAntes        String?  // JSON array
+  fotosDurante      String?  // JSON array
+  fotosDespues      String?  // JSON array
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// ============================================
+// GASTOS / RENDICIÓN
+// ============================================
+model Gasto {
+  id            String   @id @default(cuid())
+  descripcion   String
+  categoria     String   @default("Mantenimiento") // Mantenimiento, Administración, Seguridad, Áreas Verdes, etc.
+  estado        String   @default("Pendiente") // Pendiente, Pagado, Rechazado, En revisión
+  monto         Float    @default(0)
+  fecha         String?
+  propiedad     String?
+  proveedorId   String?
+  proveedor     Proveedor? @relation(fields: [proveedorId], references: [id])
+  nDoc          String?  // Número de documento
+  notas         String?
+  comprobante   String?  // base64 or URL
+  
+  // Relación con Centro de Costo
+  centroCostoId String?
+  centroCosto   CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// CAJA CHICA
+// ============================================
+model CajaChica {
+  id            String   @id @default(cuid())
+  saldo         Float    @default(0)
+  saldoInicial  Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// CATÁLOGOS MEJORADOS (con Centro de Costo)
+// ============================================
+model CatMaterial {
+  id            String   @id @default(cuid())
+  codigo        String?  @unique // MAT-ELEC-01, MAT-FONT-01, etc.
+  nombre        String
+  unidad        String   @default("unidad")
+  precioUnit    Float    @default(0)
+  categoria     String   @default("General") // Eléctrico, Fontanería, Ferretería, Pintura, Jardinería, Limpieza, Seguridad
+  stockMinimo   Int      @default(0)
+  stockActual   Int      @default(0)
+  ubicacion     String?
+  descripcion   String?
+  
+  // Centro de Costo de imputación
+  centroCostoId String?
+  centroCosto   CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model CatHerramienta {
+  id              String   @id @default(cuid())
+  codigo          String?  @unique // HERR-01, HERR-02, etc.
+  nombre          String
+  marca           String?
+  modelo          String?
+  cantidad        Int      @default(1)
+  ubicacion       String?
+  estado          String   @default("Bueno") // Bueno, Regular, Malo, En reparación
+  valorReposicion Float    @default(0)
+  fechaAdquisicion String?
+  descripcion     String?
+  
+  // Centro de Costo de adquisición
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CatTarea {
+  id              String   @id @default(cuid())
+  codigo          String?  @unique // MT-ELEC-01, MT-HID-01, etc.
+  nombre          String
+  categoria       String   @default("General") // Eléctrico, Hidráulico, Ascensores, Gas, Climatización, Seguridad, Infraestructura, Áreas Verdes
+  sistema         String?  // Sistema al que pertenece
+  tipoMantencion  String   @default("Preventivo") // Preventivo, Correctivo, Predictivo, Legal
+  frecuencia      String?  // Diaria, Semanal, Mensual, Trimestral, Semestral, Anual
+  responsable     String?  // Responsable sugerido
+  tiempoEstimado  Int      @default(0) // Tiempo estimado en minutos
+  descripcion     String?
+  
+  // Centro de Costo asociado
+  centroCostoId   String?
+  centroCosto     CentroCostoMaster? @relation(fields: [centroCostoId], references: [id])
+  
+  // Campos para tareas recurrentes
+  esRecurrente    Boolean  @default(false)
+  activa          Boolean  @default(true) // Si la tarea está activa para generar OTs
+  proximaEjecucion String? // Fecha de la próxima ejecución programada
+  ultimaEjecucion String? // Fecha de la última ejecución
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ============================================
+// CONFIGURACIÓN DEL SISTEMA
+// ============================================
+model Configuracion {
+  id            String   @id @default(cuid())
+  clave         String   @unique
+  valor         String
+  descripcion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// ESPACIOS COMUNES RESERVABLES
+// ============================================
+model EspacioComun {
+  id            String   @id @default(cuid())
+  codigo        String   @unique // ESP-001, ESP-002, etc.
+  nombre        String   // Quincho 1, Multicancha, etc.
+  tipo          String   @default("Quincho") // Quincho, Cancha, Club House, Estacionamiento, Jacuzzi, Sauna
+  capacidad     Int      @default(0)
+  ubicacion     String?
+  descripcion   String?
+  precioHora    Float    @default(0) // Precio por hora (si aplica)
+  precioDia     Float    @default(0) // Precio por día completo
+  requierePago  Boolean  @default(false)
+  activo        Boolean  @default(true)
+  notas         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reservas      Reserva[]
+}
+
+// ============================================
+// RESERVAS DE ESPACIOS COMUNES
+// ============================================
+model Reserva {
+  id                String   @id @default(cuid())
+  codigo            String   @unique // RES-000001, etc.
+  
+  // Espacio reservado
+  espacioId         String
+  espacio           EspacioComun @relation(fields: [espacioId], references: [id])
+  
+  // Residente que reserva
+  residenteId       String?
+  residente         Residente? @relation(fields: [residenteId], references: [id])
+  nombreResidente   String   // Nombre del residente (por si no está en el sistema)
+  unidadResidente   String?  // Unidad del residente
+  telefonoResidente String?
+  emailResidente    String?
+  
+  // Fechas y horarios
+  fechaReserva      String   // Fecha de la reserva (día del evento)
+  fechaSolicitud    String   // Fecha en que se solicitó la reserva
+  horario           String   @default("Mañana") // Mañana, Tarde, Noche
+  horaInicio        String?  // Hora específica de inicio
+  horaFin           String?  // Hora específica de fin
+  
+  // Estado de la reserva
+  estado            String   @default("Pendiente") // Pendiente, Confirmada, Cancelada, Completada
+  estadoPago        String   @default("Pendiente") // Pendiente, Pagado, Exento
+  
+  // Costo
+  montoTotal        Float    @default(0)
+  descuento         Float    @default(0)
+  montoFinal        Float    @default(0)
+  
+  // Información adicional
+  numeroPersonas    Int      @default(0)
+  motivoEvento      String?
+  observaciones     String?
+  
+  // Documento de respaldo
+  correoRespaldo    String?  // Base64 del correo de respaldo
+  nombreCorreoRespaldo String? // Nombre del archivo
+  
+  // Verificación de morosidad
+  verificacionMorosidad String? @default("No Verificado") // No Verificado, Al Día, Moroso
+  
+  // Aprobación
+  aprobadoPor       String?  // ID del usuario que aprobó
+  fechaAprobacion   DateTime?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

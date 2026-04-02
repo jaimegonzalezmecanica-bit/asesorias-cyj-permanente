@@ -1,0 +1,6 @@
+2026/04/01-01:31:07.433 3ad Creating DB /home/ubuntu/.browser_data_dir/Default/IndexedDB/https_github.com_0.indexeddb.leveldb since it was missing.
+2026/04/01-01:31:07.435 3ad Reusing MANIFEST /home/ubuntu/.browser_data_dir/Default/IndexedDB/https_github.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/04/02-02:03:50.701 3ae Level-0 table #5: started
+2026/04/02-02:03:50.702 3ae Level-0 table #5: 935 bytes OK
+2026/04/02-02:03:50.702 3ae Delete type=0 #3
+2026/04/02-02:03:50.702 3ae Manual compaction at level-0 from (begin) .. (end); will stop at (end)

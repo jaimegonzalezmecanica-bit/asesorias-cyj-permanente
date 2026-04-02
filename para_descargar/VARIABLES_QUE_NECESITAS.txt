@@ -1,0 +1,55 @@
+================================================================================
+              VARIABLES QUE NECESITAS CONFIGURAR EN VERCEL
+================================================================================
+
+Cuando estés en Vercel, en la sección "Environment Variables", 
+agrega estas 3 variables:
+
+------------------------------------------------------------------------------
+VARIABLE #1: DATABASE_URL
+------------------------------------------------------------------------------
+Nombre:   DATABASE_URL
+Valor:    [LA URL QUE TE DA NEON]
+
+CÓMO OBTENERLA:
+1. Ve a https://neon.tech
+2. Entra a tu proyecto
+3. Busca "Connection string" o "Dashboard"
+4. Copia la URL que se ve así:
+   postgresql://usuario:contraseña@ep-xxx.us-east-2.aws.neon.tech/neondb?sslmode=require
+
+------------------------------------------------------------------------------
+VARIABLE #2: NEXTAUTH_SECRET
+------------------------------------------------------------------------------
+Nombre:   NEXTAUTH_SECRET
+Valor:    cyj-sistema-secreto-2024-produccion-xyz
+
+(Esta es una clave secreta para proteger tu sistema)
+
+------------------------------------------------------------------------------
+VARIABLE #3: NEXTAUTH_URL
+------------------------------------------------------------------------------
+Nombre:   NEXTAUTH_URL
+Valor:    [LA URL DE TU SITIO EN VERCEL]
+
+CÓMO OBTENERLA:
+1. Después de hacer deploy en Vercel
+2. Te darán una URL como: https://sistema-cyj-abc123.vercel.app
+3. Esa es tu NEXTAUTH_URL
+
+NOTA: Esta variable puedes agregarla DESPUÉS del primer deploy,
+      yendo a Settings → Environment Variables en Vercel
+
+================================================================================
+                    EJEMPLO DE CÓMO SE VEN LAS VARIABLES
+================================================================================
+
+┌─────────────────────┬──────────────────────────────────────────────────────┐
+│ Name                │ Value                                                │
+├─────────────────────┼──────────────────────────────────────────────────────┤
+│ DATABASE_URL        │ postgresql://user:pass@ep-xyz.neon.tech/neondb?...   │
+│ NEXTAUTH_SECRET     │ cyj-sistema-secreto-2024-produccion-xyz              │
+│ NEXTAUTH_URL        │ https://sistema-cyj-abc123.vercel.app                │
+└─────────────────────┴──────────────────────────────────────────────────────┘
+
+================================================================================

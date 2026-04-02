@@ -1,0 +1,209 @@
+================================================================================
+     SISTEMA DE GESTION DE CONDOMINIOS - ASESORIAS INTEGRALES CYJ
+                    INSTRUCCIONES DE IMPLEMENTACION
+================================================================================
+
+ARCHIVO DE RESPALDO: sistema-cyj-completo.tar.gz (25 MB)
+
+================================================================================
+PASO 1: REQUISITOS PREVIOS
+================================================================================
+
+Asegurese de tener instalado:
+- Node.js 18+ o Bun (recomendado)
+- Git
+- Un editor de código (VS Code recomendado)
+
+================================================================================
+PASO 2: DESCOMPRIMIR EL ARCHIVO
+================================================================================
+
+En Windows:
+- Use 7-Zip o WinRAR para descomprimir sistema-cyj-completo.tar.gz
+
+En Linux/Mac:
+```bash
+tar -xzvf sistema-cyj-completo.tar.gz
+```
+
+================================================================================
+PASO 3: INSTALAR DEPENDENCIAS
+================================================================================
+
+Con Bun (recomendado):
+```bash
+bun install
+```
+
+Con npm:
+```bash
+npm install
+```
+
+================================================================================
+PASO 4: CONFIGURAR VARIABLES DE ENTORNO
+================================================================================
+
+Crear archivo .env en la raiz del proyecto:
+
+# Para desarrollo (SQLite)
+DATABASE_URL="file:./db/custom.db"
+
+# Claves de encriptacion (CAMBIAR en produccion)
+ENCRYPTION_KEY="tu-clave-secreta-de-32-caracteres-minimo"
+ENCRYPTION_SALT="tu-salt-secreto"
+NEXTAUTH_SECRET="tu-nextauth-secret"
+NEXTAUTH_URL="http://localhost:3000"
+
+================================================================================
+PASO 5: INICIALIZAR BASE DE DATOS
+================================================================================
+
+```bash
+# Generar cliente Prisma
+bunx prisma generate
+
+# Crear/actualizar base de datos
+bunx prisma db push
+```
+
+================================================================================
+PASO 6: CREAR USUARIO ADMINISTRADOR
+================================================================================
+
+Crear archivo scripts/create-admin.mjs:
+
+```javascript
+import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  const email = 'admin@cyjcondominios.cl'
+  const password = 'admin123'
+  
+  const existing = await prisma.user.findUnique({ where: { email } })
+  if (existing) {
+    console.log('Admin already exists:', email)
+    return
+  }
+  
+  const hashedPassword = await bcrypt.hash(password, 12)
+  const user = await prisma.user.create({
+    data: {
+      id: crypto.randomUUID(),
+      email,
+      nombre: 'Administrador',
+      apellido: 'CyJ',
+      password: hashedPassword,
+      rol: 'admin',
+      activo: true,
+      emailVerificado: new Date(),
+      updatedAt: new Date()
+    }
+  })
+  
+  console.log('Admin created:', user.email)
+}
+
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect())
+```
+
+Ejecutar:
+```bash
+bun scripts/create-admin.mjs
+```
+
+================================================================================
+PASO 7: INICIAR EL SISTEMA
+================================================================================
+
+```bash
+bun run dev
+```
+
+El sistema estara disponible en: http://localhost:3000
+
+================================================================================
+CREDENCIALES DE ACCESO
+================================================================================
+
+Email:    admin@cyjcondominios.cl
+Password: admin123
+
+IMPORTANTE: Cambiar la contrasena despues del primer acceso.
+
+================================================================================
+MODULOS INCLUIDOS (36 modulos)
+================================================================================
+
+1.  Dashboard           - Panel principal con estadisticas
+2.  Condominio          - Gestion de propiedades/unidades
+3.  Residentes          - Gestion de residentes con importacion Excel
+4.  Personal            - Gestion de personal con liquidaciones
+5.  Asistencia          - Control de asistencia
+6.  Activos             - Inventario de activos
+7.  Proveedores         - Directorio de proveedores
+8.  Ordenes de Trabajo  - OT completas con recursos y aprobacion
+9.  Gastos              - Control de gastos y rendiciones
+10. Centros de Costo    - Presupuestos por centro
+11. Proyectos           - Gestion de proyectos
+12. Inspecciones        - Inspecciones programadas
+13. Catalogos           - Materiales, herramientas, tareas
+14. Inventario          - Control de stock
+15. Herramientas        - Gestion de herramientas
+16. Materiales          - Catalogo de materiales
+17. Tareas              - Tareas predefinidas
+18. Reservas            - Reserva de espacios comunes
+19. Gastos Comunes      - Emision de gastos comunes
+20. Morosidad           - Control de morosos
+21. Notificaciones      - Sistema de notificaciones
+22. Contabilidad        - Asientos contables y plan de cuentas
+23. Cumplimiento Legal  - Control de obligaciones legales
+24. Auditoria           - Auditorias internas
+25. Rondas              - Control de rondas con QR
+26. Reportes            - Generacion de reportes
+27. Usuarios            - Gestion de usuarios y permisos
+28. Portal Residentes   - Vista para residentes
+29. Comite              - Gestion del comite
+30. Aprobaciones        - Seguimiento de aprobaciones
+31. Aprobaciones OT     - Aprobacion de ordenes de trabajo
+32. Backups             - Configuracion de respaldos
+33. Auditor Module      - Logs del sistema
+34. Tiempo Confirmacion - Metricas de tiempo
+35. Cumplimiento        - Indicadores
+36. Notificaciones Mod  - Centro de notificaciones
+
+================================================================================
+APIs INCLUIDAS (123 endpoints)
+================================================================================
+
+- Autenticacion: login, logout, session
+- CRUD completo para cada entidad
+- Importacion/exportacion Excel y CSV
+- Generacion de PDFs
+- Notificaciones
+- Y mas...
+
+================================================================================
+DESPLIEGUE EN PRODUCCION (Vercel, Railway, etc.)
+================================================================================
+
+1. Configurar variables de entorno en el hosting
+2. Usar PostgreSQL para base de datos en produccion
+3. Cambiar DATABASE_URL a conexion PostgreSQL
+4. Ejecutar migraciones: bunx prisma migrate deploy
+
+================================================================================
+SOPORTE
+================================================================================
+
+Asesorias Integrales CyJ
+Telefono: +56 964 650 643 / +56 974 408 794
+Email: asesoriasintegralescyj@gmail.com
+Direccion: Av. La Montana Norte 3650, Lampa
+
+================================================================================

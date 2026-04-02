@@ -1,0 +1,217 @@
+# Terminal Full Output
+# Terminal: demo_server
+# Command: cd /home/ubuntu/demo-cyj/Proyecto && npm run dev -- -p 3000
+# PID: 8571
+# Timestamp: 2026-03-24_22-48-05.367370
+# Original Length: 12825 characters
+# ----------------------------------------
+
+> asesorias-integrales-cyj@1.0.0 dev
+> next dev -p 3000 2>&1 | tee dev.log -p 3000
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://169.254.0.21:3000
+- Environments: .env
+✓ Ready in 377ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+  We detected TypeScript in your project and created a tsconfig.json file for you.
+ HEAD / 404 in 1231ms (next.js: 1091ms, application-code: 140ms)
+ HEAD /login 404 in 30ms (next.js: 5ms, application-code: 25ms)
+⨯ ./src/app/layout.tsx:3:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+[31m[1m>[0m [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+✓ Compiled in 341ms
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/globals.css:2:1
+Module not found: Can't resolve 'tw-animate-css'
+  [90m1 |[0m @[36mimport[0m [32m"tailwindcss"[0m;
+[31m[1m>[0m [90m2 |[0m @[36mimport[0m [32m"tw-animate-css"[0m;
+  [90m  |[0m [31m[1m^[0m
+  [90m3 |[0m
+  [90m4 |[0m @custom-variant dark (&:is(.dark *));
+  [90m5 |[0m
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+⨯ ./src/app/login/page.tsx:14:1
+Module not found: Can't resolve '@/components/ui/alert'
+  [90m12 |[0m [36mimport[0m { [33mLabel[0m } [36mfrom[0m [32m'@/components/ui/label'[0m;
+  [90m13 |[0m [36mimport[0m { [33mCard[0m, [33mCardContent[0m, [33mCardDescription[0m, [33mCardHeader[0m, [33mCardTitle[0m } [36mf...[0m
+[31m[1m>[0m [90m14 |[0m [36mimport[0m { [33mAlert[0m, [33mAlertDescription[0m } [36mfrom[0m [32m'@/components/ui/alert'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m15 |[0m [36mimport[0m { [33mLock[0m, [33mUser[0m, [33mEye[0m, [33mEyeOff[0m, [33mAlertCircle[0m, [33mLoader2[0m } [36mfrom[0m [32m'lucide-...[0m
+  [90m16 |[0m
+  [90m17 |[0m [90m// Color principal azul[0m
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+./src/app/login/page.tsx:10:1
+Module not found: Can't resolve '@/components/ui/button'
+  [90m 8 |[0m [36mimport[0m { [33mSuspense[0m, useState } [36mfrom[0m [32m'react'[0m;
+  [90m 9 |[0m [36mimport[0m { useRouter, useSearchParams } [36mfrom[0m [32m'next/navigation'[0m;
+[31m[1m>[0m [90m10 |[0m [36mimport[0m { [33mButton[0m } [36mfrom[0m [32m'@/components/ui/button'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m11 |[0m [36mimport[0m { [33mInput[0m } [36mfrom[0m [32m'@/components/ui/input'[0m;
+  [90m12 |[0m [36mimport[0m { [33mLabel[0m } [36mfrom[0m [32m'@/components/ui/label'[0m;
+  [90m13 |[0m [36mimport[0m { [33mCard[0m, [33mCardContent[0m, [33mCardDescription[0m, [33mCardHeader[0m, [33mCardTitle[0m } [36mf...[0m
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+./src/app/login/page.tsx:13:1
+Module not found: Can't resolve '@/components/ui/card'
+  [90m11 |[0m ...} [36mfrom[0m [32m'@/components/ui/input'[0m;
+  [90m12 |[0m ...} [36mfrom[0m [32m'@/components/ui/label'[0m;
+[31m[1m>[0m [90m13 |[0m ...[33mCardContent[0m, [33mCardDescription[0m, [33mCardHeader[0m, [33mCardTitle[0m } [36mfrom[0m [32m'@/compo...[0m
+  [90m   |[0m    [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m14 |[0m ... [33mAlertDescription[0m } [36mfrom[0m [32m'@/components/ui/alert'[0m;
+  [90m15 |[0m ...[33mUser[0m, [33mEye[0m, [33mEyeOff[0m, [33mAlertCircle[0m, [33mLoader2[0m } [36mfrom[0m [32m'lucide-react'[0m;
+  [90m16 |[0m ...
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+./src/app/login/page.tsx:11:1
+Module not found: Can't resolve '@/components/ui/input'
+  [90m 9 |[0m [36mimport[0m { useRouter, useSearchParams } [36mfrom[0m [32m'next/navigation'[0m;
+  [90m10 |[0m [36mimport[0m { [33mButton[0m } [36mfrom[0m [32m'@/components/ui/button'[0m;
+[31m[1m>[0m [90m11 |[0m [36mimport[0m { [33mInput[0m } [36mfrom[0m [32m'@/components/ui/input'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m12 |[0m [36mimport[0m { [33mLabel[0m } [36mfrom[0m [32m'@/components/ui/label'[0m;
+  [90m13 |[0m [36mimport[0m { [33mCard[0m, [33mCardContent[0m, [33mCardDescription[0m, [33mCardHeader[0m, [33mCardTitle[0m } [36mf...[0m
+  [90m14 |[0m [36mimport[0m { [33mAlert[0m, [33mAlertDescription[0m } [36mfrom[0m [32m'@/components/ui/alert'[0m;
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+./src/app/login/page.tsx:12:1
+Module not found: Can't resolve '@/components/ui/label'
+  [90m10 |[0m [36mimport[0m { [33mButton[0m } [36mfrom[0m [32m'@/components/ui/button'[0m;
+  [90m11 |[0m [36mimport[0m { [33mInput[0m } [36mfrom[0m [32m'@/components/ui/input'[0m;
+[31m[1m>[0m [90m12 |[0m [36mimport[0m { [33mLabel[0m } [36mfrom[0m [32m'@/components/ui/label'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m13 |[0m [36mimport[0m { [33mCard[0m, [33mCardContent[0m, [33mCardDescription[0m, [33mCardHeader[0m, [33mCardTitle[0m } [36mf...[0m
+  [90m14 |[0m [36mimport[0m { [33mAlert[0m, [33mAlertDescription[0m } [36mfrom[0m [32m'@/components/ui/alert'[0m;
+  [90m15 |[0m [36mimport[0m { [33mLock[0m, [33mUser[0m, [33mEye[0m, [33mEyeOff[0m, [33mAlertCircle[0m, [33mLoader2[0m } [36mfrom[0m [32m'lucide-...[0m
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+./src/app/layout.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  [90m2 |[0m [36mimport[0m { [33mGeist[0m, [33mGeist_Mono[0m } [36mfrom[0m [32m"next/font/google"[0m;
+  [90m3 |[0m [36mimport[0m [32m"./globals.css"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mToaster[0m } [36mfrom[0m [32m"@/components/ui/sonner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m [36mconst[0m geistSans = [33mGeist[0m({
+  [90m7 |[0m   variable: [32m"--font-geist-sans"[0m,
+https://nextjs.org/docs/messages/module-not-found
+./src/app/globals.css:2:1
+Module not found: Can't resolve 'tw-animate-css'
+  [90m1 |[0m @[36mimport[0m [32m"tailwindcss"[0m;
+[31m[1m>[0m [90m2 |[0m @[36mimport[0m [32m"tw-animate-css"[0m;
+  [90m  |[0m [31m[1m^[0m
+  [90m3 |[0m
+  [90m4 |[0m @custom-variant dark (&:is(.dark *));
+  [90m5 |[0m
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+https://nextjs.org/docs/messages/module-not-found
+ HEAD /login 500 in 1154ms (next.js: 1053ms, application-code: 101ms)
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Compiled in 4ms

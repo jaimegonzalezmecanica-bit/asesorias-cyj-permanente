@@ -1,0 +1,122 @@
+================================================================================
+        ARCHIVOS QUE DEBES REEMPLAZAR EN GITHUB
+        (Para solucionar el error de Prisma)
+================================================================================
+
+EL ERROR:
+"Error: No se pudo encontrar el esquema de Prisma necesario para este comando."
+
+CAUSA:
+El archivo schema.prisma estaba configurado para SQLite en lugar de PostgreSQL
+
+================================================================================
+SOLUCIÓN: REEMPLAZA ESTOS 3 ARCHIVOS EN GITHUB
+================================================================================
+
+Debes reemplazar 3 archivos en tu repositorio de GitHub:
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ARCHIVO 1: prisma/schema.prisma                                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Ubicación en GitHub: prisma/schema.prisma                                   │
+│ Descarga desde:        /descargas/schema.prisma                             │
+│                                                                              │
+│ QUÉ HACER:                                                                   │
+│ 1. Ve a tu repositorio en GitHub                                            │
+│ 2. Entra a la carpeta "prisma"                                              │
+│ 3. Haz clic en "schema.prisma"                                              │
+│ 4. Haz clic en el ícono de LÁPIZ ✏️ (Edit this file)                        │
+│ 5. BORRA TODO el contenido del archivo                                      │
+│ 6. Descarga el nuevo archivo desde /descargas/schema.prisma                 │
+│ 7. Ábrelo en tu computador y copia TODO el contenido                        │
+│ 8. Pega el contenido en GitHub                                              │
+│ 9. Haz clic en "Commit changes" (botón verde)                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ARCHIVO 2: vercel.json                                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Ubicación en GitHub: vercel.json (en la raíz del proyecto)                  │
+│ Descarga desde:        /descargas/vercel.json                               │
+│                                                                              │
+│ CONTENADO CORRECTO (copia y pega esto):                                      │
+│                                                                              │
+│ {                                                                            │
+│   "buildCommand": "npx prisma generate && next build",                      │
+│   "installCommand": "npm install",                                          │
+│   "framework": "nextjs",                                                    │
+│   "outputDirectory": ".next"                                                │
+│ }                                                                            │
+│                                                                              │
+│ QUÉ HACER:                                                                   │
+│ 1. Ve a tu repositorio en GitHub                                            │
+│ 2. Haz clic en "vercel.json" (en la raíz)                                   │
+│ 3. Haz clic en el ícono de LÁPIZ ✏️ (Edit this file)                        │
+│ 4. BORRA TODO el contenido                                                  │
+│ 5. Pega el contenido de arriba                                              │
+│ 6. Haz clic en "Commit changes" (botón verde)                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ARCHIVO 3: package.json                                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Ubicación en GitHub: package.json (en la raíz del proyecto)                 │
+│ Descarga desde:        /descargas/package.json                              │
+│                                                                              │
+│ QUÉ HACER:                                                                   │
+│ 1. Ve a tu repositorio en GitHub                                            │
+│ 2. Haz clic en "package.json" (en la raíz)                                  │
+│ 3. Haz clic en el ícono de LÁPIZ ✏️ (Edit this file)                        │
+│ 4. BORRA TODO el contenido                                                  │
+│ 5. Descarga el nuevo archivo desde /descargas/package.json                  │
+│ 6. Ábrelo y copia TODO el contenido                                         │
+│ 7. Pega el contenido en GitHub                                              │
+│ 8. Haz clic en "Commit changes" (botón verde)                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+OPCIÓN ALTERNATIVA: SUBIR TODO DE NUEVO
+================================================================================
+
+Si prefieres empezar de nuevo:
+
+1. Descarga: /descargas/PARA_SUBIR_A_VERCEL.zip (9 MB)
+2. Descomprime el archivo en tu computador
+3. Elimina tu repositorio actual en GitHub:
+   - Ve a Settings → Desplázate abajo → Delete repository
+4. Crea un nuevo repositorio llamado "sistema-cyj"
+5. Sube TODOS los archivos y carpetas descomprimidos:
+   - src/ (carpeta completa)
+   - prisma/ (carpeta completa)
+   - public/ (carpeta completa)
+   - package.json
+   - vercel.json
+   - next.config.ts
+   - tsconfig.json
+   - tailwind.config.ts
+   - postcss.config.mjs
+   - components.json
+   - .env.example
+6. Vuelve a Vercel
+7. Haz clic en "Redeploy" o importa el repositorio de nuevo
+
+================================================================================
+DESPUÉS DE REEMPLAZAR LOS ARCHIVOS
+================================================================================
+
+1. Ve a Vercel Dashboard
+2. Entra a tu proyecto "sistema-cyj"
+3. Haz clic en "Deployments"
+4. Haz clic en los "..." del último deploy
+5. Selecciona "Redeploy"
+6. Espera 3-5 minutos
+
+================================================================================
+VARIABLES DE ENTORNO EN VERCEL
+================================================================================
+
+Asegúrate de que estas variables estén configuradas:
+- DATABASE_URL = (tu URL de Neon, comienza con postgresql://...)
+- NEXTAUTH_SECRET = cyj-sistema-secreto-2024-produccion-seguro
+
+================================================================================

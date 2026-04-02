@@ -1,0 +1,174 @@
+# ===========================================
+# Docker Compose - PRODUCCIÓN
+# Condominio Laguna Norte - Sistema de Gestión v2
+# ===========================================
+# Uso: docker compose -f docker-compose.prod.yml up -d
+
+version: '3.8'
+
+services:
+  # =========================================
+  # Reverse Proxy (Caddy)
+  # =========================================
+  caddy:
+    image: caddy:2-alpine
+    container_name: condominio-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - condominio-network
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # =========================================
+  # Aplicación Principal Next.js
+  # =========================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    image: condominio-app:${VERSION:-latest}
+    container_name: condominio-app
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/condominio.db
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - ENCRYPTION_SALT=${ENCRYPTION_SALT}
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+    volumes:
+      - condominio-data:/app/data
+      - condominio-uploads:/app/uploads
+      - condominio-backups:/app/backups
+    networks:
+      - condominio-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/auth/session"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # =========================================
+  # Servicio Scheduler (OTs Recurrentes)
+  # =========================================
+  ot-scheduler:
+    build:
+      context: ./mini-services/ot-scheduler
+      dockerfile: Dockerfile.scheduler
+    image: condominio-scheduler:${VERSION:-latest}
+    container_name: condominio-scheduler
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/condominio.db
+      - API_BASE_URL=http://app:3000
+    volumes:
+      - condominio-data:/app/data
+    networks:
+      - condominio-network
+    depends_on:
+      app:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  # =========================================
+  # Backup Service
+  # =========================================
+  backup:
+    image: alpine:latest
+    container_name: condominio-backup
+    restart: unless-stopped
+    environment:
+      - BACKUP_RETENTION_DAYS=${BACKUP_RETENTION_DAYS:-30}
+    volumes:
+      - condominio-data:/data:ro
+      - condominio-backups:/backups
+      - ./scripts/backup.sh:/backup.sh:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      apk add --no-cache sqlite curl
+      while true; do
+        /backup.sh
+        sleep 86400
+      done
+    networks:
+      - condominio-network
+
+  # =========================================
+  # Watchtower (Actualizaciones Automáticas)
+  # =========================================
+  watchtower:
+    image: containrrr/watchtower
+    container_name: condominio-watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=86400
+      - WATCHTOWER_LABEL_ENABLE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+
+# =========================================
+# Volúmenes Persistentes
+# =========================================
+volumes:
+  condominio-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data
+  condominio-uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./uploads
+  condominio-backups:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./backups
+  caddy-data:
+  caddy-config:
+
+# =========================================
+# Red Interna
+# =========================================
+networks:
+  condominio-network:
+    driver: bridge

@@ -1,0 +1,277 @@
+# Terminal Full Output
+# Terminal: sh1
+# Command: sudo apt-get update && sudo apt-get install -y npm
+# PID: 14150
+# Timestamp: 2026-03-24_23-20-09.994937
+# Original Length: 23364 characters
+# ----------------------------------------
+
+Get:1 https://cli.github.com/packages stable InRelease [3917 B]
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]      
+Get:3 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]                
+Get:4 http://ppa.launchpad.net/savoury1/chromium/ubuntu jammy InRelease [18.1 kB]
+Get:5 https://cli.github.com/packages stable/main amd64 Packages [357 B]       
+Get:6 http://ppa.launchpad.net/savoury1/chromium/ubuntu jammy/main amd64 Packages [1542 B]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1305 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3839 kB]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [6794 kB]
+Get:14 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [62.6 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4173 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7011 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [70.9 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1615 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [84.0 kB]
+Fetched 45.4 MB in 4s (13.0 MB/s)                            
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential bzip2
+  cpp-11 dpkg-dev fakeroot g++ g++-11 gcc gcc-11 gcc-11-base gcc-12-base gyp
+  javascript-common libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libasan6 libatomic1 libbinutils libc-ares2 libcc1-0
+  libctf-nobfd0 libctf0 libfakeroot libgcc-11-dev libgcc-s1 libgfortran5
+  libgomp1 libitm1 libjs-events libjs-highlight.js libjs-inherits
+  libjs-is-typedarray libjs-psl libjs-source-map libjs-sprintf-js
+  libjs-typedarray-to-buffer liblsan0 libnode-dev libnode72 libnotify-bin
+  libquadmath0 libssl-dev libssl3 libstdc++-11-dev libstdc++6 libtsan0
+  libubsan1 libuv1 libuv1-dev lto-disabled-list node-abab node-abbrev
+  node-agent-base node-ansi-regex node-ansi-styles node-ansistyles node-aproba
+  node-archy node-are-we-there-yet node-argparse node-arrify node-asap
+  node-asynckit node-balanced-match node-brace-expansion node-builtins
+  node-cacache node-chalk node-chownr node-clean-yaml-object node-cli-table
+  node-clone node-color-convert node-color-name node-colors node-columnify
+  node-combined-stream node-commander node-console-control-strings
+  node-copy-concurrently node-core-util-is node-coveralls node-cssom
+  node-cssstyle node-debug node-decompress-response node-defaults
+  node-delayed-stream node-delegates node-depd node-diff node-encoding
+  node-end-of-stream node-err-code node-escape-string-regexp node-esprima
+  node-events node-fancy-log node-fetch node-foreground-child node-form-data
+  node-fs-write-stream-atomic node-fs.realpath node-function-bind node-gauge
+  node-get-stream node-glob node-got node-graceful-fs node-growl node-gyp
+  node-has-flag node-has-unicode node-hosted-git-info node-https-proxy-agent
+  node-iconv-lite node-iferr node-imurmurhash node-indent-string node-inflight
+  node-inherits node-ini node-ip node-ip-regex node-is-buffer
+  node-is-plain-obj node-is-typedarray node-isarray node-isexe node-js-yaml
+  node-jsdom node-json-buffer node-json-parse-better-errors node-jsonparse
+  node-kind-of node-lcov-parse node-lodash-packages node-log-driver
+  node-lowercase-keys node-lru-cache node-mime node-mime-types
+  node-mimic-response node-minimatch node-minimist node-minipass node-mkdirp
+  node-move-concurrently node-ms node-mute-stream node-negotiator node-nopt
+  node-normalize-package-data node-npm-bundled node-npm-package-arg
+  node-npmlog node-object-assign node-once node-opener node-osenv
+  node-p-cancelable node-p-map node-path-is-absolute node-process-nextick-args
+  node-promise-inflight node-promise-retry node-promzard node-psl node-pump
+  node-punycode node-quick-lru node-read node-read-package-json
+  node-readable-stream node-resolve node-retry node-rimraf node-run-queue
+  node-safe-buffer node-semver node-set-blocking node-signal-exit node-slash
+  node-slice-ansi node-source-map node-source-map-support node-spdx-correct
+  node-spdx-exceptions node-spdx-expression-parse node-spdx-license-ids
+  node-sprintf-js node-ssri node-stack-utils node-stealthy-require
+  node-string-decoder node-string-width node-strip-ansi node-supports-color
+  node-tap node-tap-mocha-reporter node-tap-parser node-tar node-text-table
+  node-time-stamp node-tmatch node-tough-cookie node-typedarray-to-buffer
+  node-unique-filename node-universalify node-util-deprecate
+  node-validate-npm-package-license node-validate-npm-package-name
+  node-wcwidth.js node-webidl-conversions node-whatwg-fetch node-which
+  node-wide-align node-wrappy node-write-file-atomic node-ws node-yallist
+  nodejs nodejs-doc xz-utils
+Suggested packages:
+  binutils-doc bzip2-doc gcc-11-locales debian-keyring g++-multilib
+  g++-11-multilib gcc-11-doc gcc-multilib manpages-dev autoconf automake
+  libtool flex bison gdb gcc-doc gcc-11-multilib apache2 | lighttpd | httpd
+  libjs-angularjs libssl-doc libstdc++-11-doc node-nyc
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential bzip2
+  dpkg-dev fakeroot g++ g++-11 gcc gcc-11 gyp javascript-common
+  libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl
+  libasan6 libatomic1 libbinutils libc-ares2 libcc1-0 libctf-nobfd0 libctf0
+  libfakeroot libgcc-11-dev libitm1 libjs-events libjs-highlight.js
+  libjs-inherits libjs-is-typedarray libjs-psl libjs-source-map
+  libjs-sprintf-js libjs-typedarray-to-buffer liblsan0 libnode-dev libnode72
+  libnotify-bin libssl-dev libstdc++-11-dev libtsan0 libubsan1 libuv1
+  libuv1-dev lto-disabled-list node-abab node-abbrev node-agent-base
+  node-ansi-regex node-ansi-styles node-ansistyles node-aproba node-archy
+  node-are-we-there-yet node-argparse node-arrify node-asap node-asynckit
+  node-balanced-match node-brace-expansion node-builtins node-cacache
+  node-chalk node-chownr node-clean-yaml-object node-cli-table node-clone
+  node-color-convert node-color-name node-colors node-columnify
+  node-combined-stream node-commander node-console-control-strings
+  node-copy-concurrently node-core-util-is node-coveralls node-cssom
+  node-cssstyle node-debug node-decompress-response node-defaults
+  node-delayed-stream node-delegates node-depd node-diff node-encoding
+  node-end-of-stream node-err-code node-escape-string-regexp node-esprima
+  node-events node-fancy-log node-fetch node-foreground-child node-form-data
+  node-fs-write-stream-atomic node-fs.realpath node-function-bind node-gauge
+  node-get-stream node-glob node-got node-graceful-fs node-growl node-gyp
+  node-has-flag node-has-unicode node-hosted-git-info node-https-proxy-agent
+  node-iconv-lite node-iferr node-imurmurhash node-indent-string node-inflight
+  node-inherits node-ini node-ip node-ip-regex node-is-buffer
+  node-is-plain-obj node-is-typedarray node-isarray node-isexe node-js-yaml
+  node-jsdom node-json-buffer node-json-parse-better-errors node-jsonparse
+  node-kind-of node-lcov-parse node-lodash-packages node-log-driver
+  node-lowercase-keys node-lru-cache node-mime node-mime-types
+  node-mimic-response node-minimatch node-minimist node-minipass node-mkdirp
+  node-move-concurrently node-ms node-mute-stream node-negotiator node-nopt
+  node-normalize-package-data node-npm-bundled node-npm-package-arg
+  node-npmlog node-object-assign node-once node-opener node-osenv
+  node-p-cancelable node-p-map node-path-is-absolute node-process-nextick-args
+  node-promise-inflight node-promise-retry node-promzard node-psl node-pump
+  node-punycode node-quick-lru node-read node-read-package-json
+  node-readable-stream node-resolve node-retry node-rimraf node-run-queue
+  node-safe-buffer node-semver node-set-blocking node-signal-exit node-slash
+  node-slice-ansi node-source-map node-source-map-support node-spdx-correct
+  node-spdx-exceptions node-spdx-expression-parse node-spdx-license-ids
+  node-sprintf-js node-ssri node-stack-utils node-stealthy-require
+  node-string-decoder node-string-width node-strip-ansi node-supports-color
+  node-tap node-tap-mocha-reporter node-tap-parser node-tar node-text-table
+  node-time-stamp node-tmatch node-tough-cookie node-typedarray-to-buffer
+  node-unique-filename node-universalify node-util-deprecate
+  node-validate-npm-package-license node-validate-npm-package-name
+  node-wcwidth.js node-webidl-conversions node-whatwg-fetch node-which
+  node-wide-align node-wrappy node-write-file-atomic node-ws node-yallist
+  nodejs nodejs-doc npm xz-utils
+The following packages will be upgraded:
+  cpp-11 gcc-11-base gcc-12-base libgcc-s1 libgfortran5 libgomp1 libquadmath0
+  libssl3 libstdc++6
+9 upgraded, 220 newly installed, 0 to remove and 92 not upgraded.
+Need to get 83.1 MB of archives.
+After this operation, 260 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-12-base amd64 12.3.0-1ubuntu1~22.04.3 [216 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libstdc++6 amd64 12.3.0-1ubuntu1~22.04.3 [699 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libquadmath0 amd64 12.3.0-1ubuntu1~22.04.3 [154 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgomp1 amd64 12.3.0-1ubuntu1~22.04.3 [127 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgfortran5 amd64 12.3.0-1ubuntu1~22.04.3 [879 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgcc-s1 amd64 12.3.0-1ubuntu1~22.04.3 [53.9 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl3 amd64 3.0.2-0ubuntu1.21 [1905 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libuv1 amd64 1.43.0-1ubuntu0.1 [92.7 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy/main amd64 xz-utils amd64 5.2.5-2ubuntu1 [84.8 kB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 binutils-common amd64 2.38-4ubuntu2.12 [223 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libbinutils amd64 2.38-4ubuntu2.12 [663 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libctf-nobfd0 amd64 2.38-4ubuntu2.12 [108 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libctf0 amd64 2.38-4ubuntu2.12 [103 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.38-4ubuntu2.12 [2324 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 binutils amd64 2.38-4ubuntu2.12 [3184 B]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 cpp-11 amd64 11.4.0-1ubuntu1~22.04.3 [10.0 MB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11-base amd64 11.4.0-1ubuntu1~22.04.3 [216 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcc1-0 amd64 12.3.0-1ubuntu1~22.04.3 [48.3 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libitm1 amd64 12.3.0-1ubuntu1~22.04.3 [30.2 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libatomic1 amd64 12.3.0-1ubuntu1~22.04.3 [10.5 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libasan6 amd64 11.4.0-1ubuntu1~22.04.3 [2283 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 liblsan0 amd64 12.3.0-1ubuntu1~22.04.3 [1069 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtsan0 amd64 11.4.0-1ubuntu1~22.04.3 [2260 kB]
+Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libubsan1 amd64 12.3.0-1ubuntu1~22.04.3 [976 kB]
+Get:25 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgcc-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [2517 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11 amd64 11.4.0-1ubuntu1~22.04.3 [20.1 MB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy/main amd64 gcc amd64 4:11.2.0-1ubuntu1 [5112 B]
+Get:28 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libstdc++-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [2101 kB]
+Get:29 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 g++-11 amd64 11.4.0-1ubuntu1~22.04.3 [11.4 MB]
+Get:30 http://archive.ubuntu.com/ubuntu jammy/main amd64 g++ amd64 4:11.2.0-1ubuntu1 [1412 B]
+Get:31 http://archive.ubuntu.com/ubuntu jammy/main amd64 bzip2 amd64 1.0.8-5build1 [34.8 kB]
+Get:32 http://archive.ubuntu.com/ubuntu jammy/main amd64 lto-disabled-list all 24 [12.5 kB]
+Get:33 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 dpkg-dev all 1.21.1ubuntu2.6 [922 kB]
+Get:34 http://archive.ubuntu.com/ubuntu jammy/main amd64 build-essential amd64 12.9ubuntu3 [4744 B]
+Get:35 http://archive.ubuntu.com/ubuntu jammy/main amd64 libfakeroot amd64 1.28-1ubuntu1 [31.5 kB]
+Get:36 http://archive.ubuntu.com/ubuntu jammy/main amd64 fakeroot amd64 1.28-1ubuntu1 [60.4 kB]
+Get:37 http://archive.ubuntu.com/ubuntu jammy/universe amd64 gyp all 0.1+20210831gitd6c5dd5-5 [238 kB]
+Get:38 http://archive.ubuntu.com/ubuntu jammy/main amd64 javascript-common all 11+nmu1 [5936 B]
+Get:39 http://archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-diff-perl all 1.201-1 [41.8 kB]
+Get:40 http://archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-diff-xs-perl amd64 0.04-6build3 [11.9 kB]
+Get:41 http://archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:42 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-events all 3.3.0+~3.0.0-2 [9734 B]
+Get:43 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-highlight.js all 9.18.5+dfsg1-1 [367 kB]
+Get:44 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-is-typedarray all 1.0.0-4 [3804 B]
+Get:45 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-psl all 1.8.0+ds-6 [76.3 kB]
+Get:46 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-sprintf-js all 1.1.2+ds1+~1.1.2-1 [12.8 kB]
+Get:47 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-typedarray-to-buffer all 4.0.0-2 [4658 B]
+Get:48 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl-dev amd64 3.0.2-0ubuntu1.21 [2375 kB]
+Get:49 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libuv1-dev amd64 1.43.0-1ubuntu0.1 [130 kB]
+Get:50 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-ares2 amd64 1.18.1-1ubuntu0.22.04.3 [45.1 kB]
+Get:51 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libnode72 amd64 12.22.9~dfsg-1ubuntu3.6 [10.8 MB]
+Get:52 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libnode-dev amd64 12.22.9~dfsg-1ubuntu3.6 [609 kB]
+Get:53 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnotify-bin amd64 0.7.9-3ubuntu5.22.04.1 [7560 B]
+Get:54 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 nodejs amd64 12.22.9~dfsg-1ubuntu3.6 [122 kB]
+Get:55 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-abab all 2.0.5-2 [6578 B]
+Get:56 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-ms all 2.1.3+~cs0.7.31-2 [5782 B]
+Get:57 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-debug all 4.3.2+~cs4.1.7-1 [17.6 kB]
+Get:58 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-yallist all 4.0.0+~4.0.1-1 [8322 B]
+Get:59 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-lru-cache all 6.0.0+~5.1.1-1 [11.3 kB]
+Get:60 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-semver all 7.3.5+~7.3.8-1 [41.5 kB]
+Get:61 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-agent-base all 6.0.2+~cs5.4.2-1 [17.9 kB]
+Get:62 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-ansi-regex all 5.0.1-1 [4984 B]
+Get:63 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-ansistyles all 0.1.3-5 [4546 B]
+Get:64 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-aproba all 2.0.0-2 [5620 B]
+Get:65 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-delegates all 1.0.0-3 [4280 B]
+Get:66 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libjs-inherits all 2.0.4-4 [3468 B]
+Get:67 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-inherits all 2.0.4-4 [3010 B]
+Get:68 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-core-util-is all 1.0.3-1 [4066 B]
+Get:69 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-safe-buffer all 5.2.1+~cs2.1.2-2 [15.7 kB]
+Get:70 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-string-decoder all 1.3.0-5 [7046 B]
+Get:71 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-process-nextick-args all 2.0.1-2 [3730 B]
+Get:72 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-util-deprecate all 1.0.2-3 [4202 B]
+Get:73 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-isarray all 2.0.5-3 [3934 B]
+Get:74 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-readable-stream all 3.6.0+~cs3.0.0-1 [32.6 kB]
+Get:75 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-are-we-there-yet all 3.0.0+~1.1.0-1 [8920 B]
+Get:76 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-arrify all 2.0.1-2 [3610 B]
+Get:77 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-asap all 2.0.6+~2.0.0-1 [14.4 kB]
+Get:78 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-asynckit all 0.4.0-4 [10.6 kB]
+Get:79 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-builtins all 4.0.0-1 [3860 B]
+Get:80 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-chownr all 2.0.0-1 [4404 B]
+Get:81 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-fs.realpath all 1.0.0-2 [6106 B]
+Get:82 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-wrappy all 1.0.2-2 [3658 B]
+Get:83 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-once all 1.4.0-4 [4708 B]
+Get:84 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-inflight all 1.0.6-2 [3940 B]
+Get:85 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-balanced-match all 2.0.0-1 [4910 B]
+Get:86 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-brace-expansion all 2.0.1-1 [7458 B]
+Get:87 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-minimatch all 3.1.1+~3.0.5-1 [16.9 kB]
+Get:88 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-path-is-absolute all 2.0.0-2 [4062 B]
+Get:89 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-glob all 7.2.1+~cs7.6.15-1 [131 kB]
+Get:90 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-graceful-fs all 4.2.4+repack-1 [12.5 kB]
+Get:91 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-mkdirp all 1.0.4+~1.0.2-1 [11.4 kB]
+Get:92 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-iferr all 1.0.2+~1.0.2-1 [4610 B]
+Get:93 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-imurmurhash all 0.1.4+dfsg+~0.1.1-1 [8510 B]
+Get:94 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-fs-write-stream-atomic all 1.0.10-5 [5256 B]
+Get:95 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-rimraf all 3.0.2-1 [10.1 kB]
+Get:96 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-run-queue all 2.0.0-2 [5092 B]
+Get:97 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-copy-concurrently all 1.0.5-8 [7118 B]
+Get:98 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-move-concurrently all 1.0.1-4 [5120 B]
+Get:99 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-escape-string-regexp all 4.0.0-2 [4328 B]
+Get:100 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-indent-string all 4.0.0-2 [4122 B]
+Get:101 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-p-map all 4.0.0+~3.1.0+~3.0.1-1 [8058 B]
+Get:102 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-promise-inflight all 1.0.1+~1.0.0-1 [4896 B]
+Get:103 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-ssri all 8.0.1-2 [19.6 kB]
+Get:104 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-unique-filename all 1.1.1+ds-1 [3832 B]
+Get:105 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-cacache all 15.0.5+~cs13.9.21-3 [34.9 kB]
+Get:106 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-clean-yaml-object all 0.1.0-5 [4718 B]
+Get:107 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-clone all 2.1.2-3 [8344 B]
+Get:108 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-color-name all 1.1.4+~1.1.1-2 [6076 B]
+Get:109 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-color-convert all 2.0.1-1 [10.2 kB]
+Get:110 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-colors all 1.4.0-3 [12.3 kB]
+Get:111 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-strip-ansi all 6.0.1-1 [4184 B]
+Get:112 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-defaults all 1.0.3+~1.0.3-1 [4288 B]
+Get:113 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-wcwidth.js all 1.0.2-1 [7278 B]
+Get:114 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-columnify all 1.5.4+~1.5.1-1 [12.6 kB]
+Get:115 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-console-control-strings all 1.1.0-2 [5428 B]
+Get:116 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-growl all 1.10.5-4 [7064 B]
+Get:117 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-sprintf-js all 1.1.2+ds1+~1.1.2-1 [3916 B]
+Get:118 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-argparse all 2.0.1-2 [33.2 kB]
+Get:119 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-esprima all 4.0.1+ds+~4.0.3-2 [69.3 kB]
+Get:120 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-js-yaml all 4.1.0+dfsg+~4.0.5-6 [62.7 kB]
+Get:121 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-lcov-parse all 1.0.0+20170612git80d039574ed9-5 [5084 B]
+Get:122 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-log-driver all 1.2.7+git+20180219+bba1761737-7 [5436 B]
+Get:123 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-is-plain-obj all 3.0.0-2 [3994 B]
+Get:124 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-is-buffer all 2.0.5-2 [4128 B]
+Get:125 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-kind-of all 6.0.3+dfsg-2 [8628 B]
+Get:126 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-minimist all 1.2.5+~cs5.3.2-1 [9434 B]
+Get:127 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-cssom all 0.4.4-3 [14.1 kB]
+Get:128 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-cssstyle all 2.3.0-2 [30.3 kB]
+Get:129 http://archive.ubuntu.com/ubuntu jammy/universe amd64 node-delayed-stream all 1.0.0-5 [5464 B]
+Get:130 http://archive.ubuntu.com/ubuntu jammy/universe amd64

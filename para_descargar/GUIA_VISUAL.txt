@@ -1,0 +1,302 @@
+================================================================================
+                   GUÍA VISUAL PASO A PASO
+                 (Con descripciones de lo que verás)
+================================================================================
+
+
+================================================================================
+PASO 1: CREAR CUENTA EN GITHUB
+================================================================================
+
+📍 DÓNDE IR: https://github.com
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  GitHub                                          [Sign in] [Sign up] │
+   │                                                             │
+   │   Let's build from here                                    │
+   │   GitHub is where over 100 million developers               │
+   │   shape the future of software.                            │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en "Sign up" (botón verde arriba a la derecha)
+   2. Escribe tu email
+   3. Crea una contraseña
+   4. Elige un nombre de usuario (ejemplo: tu-nombre)
+   5. Clic en "Create account"
+
+
+================================================================================
+PASO 2: CREAR REPOSITORIO EN GITHUB
+================================================================================
+
+📍 DÓNDE: En GitHub, después de iniciar sesión
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  [+] ▼    Tu-nombre                                        │
+   │                                                             │
+   │   Ready to start your next project?                        │
+   │   [Create repository]                                       │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en el "+" arriba a la derecha
+   2. Selecciona "New repository"
+
+👀 QUÉ VERÁS DESPUÉS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Create a new repository                                    │
+   │                                                             │
+   │  Repository name: [___________________]                     │
+   │                                                             │
+   │  ○ Public   ● Private                                      │
+   │                                                             │
+   │  [Create repository]                                        │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. En "Repository name" escribe: sistema-cyj
+   2. Selecciona "Public" (para que sea gratis)
+   3. Clic en "Create repository" (botón verde)
+
+
+================================================================================
+PASO 3: SUBIR ARCHIVOS A GITHUB
+================================================================================
+
+📍 DÓNDE: En tu nuevo repositorio "sistema-cyj"
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  sistema-cyj                                                │
+   │                                                             │
+   │  Quick setup - if you've done this kind of thing before    │
+   │                                                             │
+   │  …or create a new repository on the command line           │
+   │                                                             │
+   │  [uploading an existing file] ← ESTO                       │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Primero DESCOMPRIME el archivo PARA_SUBIR_A_VERCEL.zip en tu computador
+      (Clic derecho → Extraer todo / Unzip)
+
+   2. Haz clic en "uploading an existing file"
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Drag files here to add them to your repository            │
+   │                                                             │
+   │  ┌─────────────────────────────────────────────────────┐    │
+   │  │                                                      │    │
+   │  │    Drag additional files here                        │    │
+   │  │    or [choose your files]                            │    │
+   │  │                                                      │    │
+   │  └─────────────────────────────────────────────────────┘    │
+   │                                                             │
+   │  Commit changes:                                            │
+   │  [Subiendo sistema_____]                                    │
+   │                                                             │
+   │  [Commit changes]                                           │
+   └─────────────────────────────────────────────────────────────┘
+
+   3. Arrastra TODAS las carpetas y archivos descomprimidos:
+      📁 src (carpeta completa)
+      📁 prisma (carpeta completa)
+      📁 public (carpeta completa)
+      📄 package.json
+      📄 next.config.ts
+      📄 tsconfig.json
+      📄 tailwind.config.ts
+      📄 postcss.config.mjs
+      📄 components.json
+      📄 vercel.json
+      📄 .env.example
+
+   4. En "Commit changes" escribe: "Subiendo sistema"
+   5. Clic en "Commit changes" (botón verde)
+
+
+================================================================================
+PASO 4: CREAR BASE DE DATOS EN NEON
+================================================================================
+
+📍 DÓNDE IR: https://neon.tech
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Neon                                        [Sign up] [Log in] │
+   │                                                             │
+   │   Serverless Postgres                                       │
+   │   The serverless Postgres platform                          │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en "Sign up"
+   2. Elige "Continue with Google" o "Continue with GitHub"
+
+👀 QUÉ VERÁS DESPUÉS DE REGISTRARTE:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  [Create a project]                                         │
+   └─────────────────────────────────────────────────────────────┘
+
+   3. Clic en "Create a project"
+   4. Nombre: "cyj-database"
+   5. Clic en "Create project"
+
+👀 QUÉ VERÁS (¡IMPORTANTE!):
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Your project is ready!                                     │
+   │                                                             │
+   │  Connection string:                                         │
+   │  postgresql://usuario:contraseña@ep-xxx.neon.tech/neondb   │
+   │                                                 [📋 Copiar] │
+   └─────────────────────────────────────────────────────────────┘
+
+   6. ¡Copia esta URL! La necesitarás en Vercel
+
+
+================================================================================
+PASO 5: CREAR CUENTA EN VERCEL
+================================================================================
+
+📍 DÓNDE IR: https://vercel.com
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Vercel                                                     │
+   │                                                             │
+   │  [Continue with GitHub] ← USA ESTE                         │
+   │  [Continue with GitLab]                                     │
+   │  [Continue with Bitbucket]                                  │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en "Continue with GitHub"
+   2. Autoriza a Vercel para acceder a tu GitHub
+
+
+================================================================================
+PASO 6: IMPORTAR PROYECTO EN VERCEL
+================================================================================
+
+📍 DÓNDE: En Vercel, después de iniciar sesión
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Let's build something new.                                │
+   │                                                             │
+   │  [Add New...]                                               │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en "Add New..."
+   2. Selecciona "Project"
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Import Git Repository                                      │
+   │                                                             │
+   │  Your repositories:                                         │
+   │  ┌───────────────────────────────────────────────────────┐  │
+   │  │ sistema-cyj                          [Import]         │  │
+   │  └───────────────────────────────────────────────────────┘  │
+   └─────────────────────────────────────────────────────────────┘
+
+   3. Clic en "Import" junto a "sistema-cyj"
+
+
+================================================================================
+PASO 7: CONFIGURAR PROYECTO EN VERCEL
+================================================================================
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Configure Project                                          │
+   │                                                             │
+   │  Framework Preset: Next.js ✓                               │
+   │                                                             │
+   │  Environment Variables:                                     │
+   │  ┌────────────────┬───────────────────────────────────┐     │
+   │  │ Key            │ Value                              │     │
+   │  │ [___________]  │ [_______________________________] │     │
+   │  │               │ [Add]                               │     │
+   │  └────────────────┴───────────────────────────────────┘     │
+   │                                                             │
+   │  [Deploy]                                                   │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. En "Key" escribe: DATABASE_URL
+   2. En "Value" pega la URL de Neon que copiaste
+   3. Clic en "Add"
+
+   4. En "Key" escribe: NEXTAUTH_SECRET
+   5. En "Value" escribe: cyj-sistema-secreto-2024-produccion
+   6. Clic en "Add"
+
+   7. Clic en "Deploy" (botón azul grande)
+
+
+================================================================================
+PASO 8: ESPERAR Y OBTENER URL
+================================================================================
+
+👀 QUÉ VERÁS:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  Building...                                                │
+   │  ████████████████████░░░░░░░░░░  60%                        │
+   │                                                             │
+   │  Installing dependencies...                                 │
+   │  Building project...                                        │
+   └─────────────────────────────────────────────────────────────┘
+
+⏳ ESPERA: 2-5 minutos
+
+👀 QUÉ VERÁS AL TERMINAR:
+   ┌─────────────────────────────────────────────────────────────┐
+   │  🎉 Congratulations!                                        │
+   │                                                             │
+   │  Your project has been deployed!                           │
+   │                                                             │
+   │  https://sistema-cyj-abc123.vercel.app                     │
+   │                       [Visit]                               │
+   └─────────────────────────────────────────────────────────────┘
+
+👆 QUÉ HACER:
+   1. Clic en "Visit" o copia tu URL
+   2. ¡Tu sistema está en línea!
+
+
+================================================================================
+PASO 9: CREAR USUARIO ADMIN
+================================================================================
+
+📍 DÓNDE IR: https://TU-URL.vercel.app/api/auth/init-admin
+
+(Ejemplo: https://sistema-cyj-abc123.vercel.app/api/auth/init-admin)
+
+👀 QUÉ VERÁS:
+   {"success":true,"message":"Admin creado"}
+
+👆 QUÉ HACER:
+   1. Ve a tu URL principal
+   2. Usuario: admin
+   3. Contraseña: admin123
+   4. ¡IMPORTANTE! Cambia la contraseña después de entrar
+
+
+================================================================================
+                           ¡LISTO!
+================================================================================
+
+Tu sistema está funcionando en internet, gratis.
+
+Si tienes problemas, revisa:
+1. ¿Subiste TODOS los archivos a GitHub?
+2. ¿Configuraste DATABASE_URL en Vercel?
+3. ¿La base de datos Neon está activa?
+
+================================================================================

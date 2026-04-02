@@ -1,0 +1,22 @@
+# ===========================================
+# Dockerfile - OT Scheduler Service
+# ===========================================
+
+FROM oven/bun:1 AS runner
+WORKDIR /app
+
+# Copiar archivos del servicio
+COPY package.json ./
+COPY index.ts ./
+
+# Instalar dependencias
+RUN bun install
+
+# Variables de entorno
+ENV NODE_ENV=production
+ENV PORT=3010
+
+EXPOSE 3010
+
+# Comando de inicio
+CMD ["bun", "run", "index.ts"]

@@ -1,0 +1,30 @@
+================================================================================
+                          RESUMEN EN 5 PASOS
+================================================================================
+
+PASO 1: DESCARGA EL ARCHIVO
+→ Descarga: PARA_SUBIR_A_VERCEL.zip
+
+PASO 2: DESCOMPRIME EL ARCHIVO
+→ Clic derecho → Extraer todo (creará una carpeta con archivos)
+
+PASO 3: SUBE A GITHUB
+→ Ve a github.com → Crea repositorio → Sube TODOS los archivos descomprimidos
+
+PASO 4: CREA BASE DE DATOS EN NEON
+→ Ve a neon.tech → Crea proyecto gratis → COPIA la URL de conexión
+
+PASO 5: CONECTA VERCEL
+→ Ve a vercel.com → Importa tu repositorio de GitHub → Agrega DATABASE_URL → Deploy
+
+================================================================================
+                          RESULTADO FINAL
+================================================================================
+
+Tu sistema estará disponible en una URL como:
+https://sistema-cyj-xxxx.vercel.app
+
+Usuario inicial: admin
+Contraseña: admin123
+
+================================================================================

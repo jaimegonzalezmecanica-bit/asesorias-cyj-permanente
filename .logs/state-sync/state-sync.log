@@ -1,0 +1,31 @@
+{"time":"2026-03-24T20:50:33.96905738-04:00","level":"INFO","msg":"Sentry initialized","dsn":"https://962d173a894d***","environment":"PROD","release":"7.1.4","sandbox_id":"if40isdlwvowhzppnfp31"}
+{"time":"2026-03-24T20:50:33.969103941-04:00","level":"INFO","msg":"Sentry initialized successfully"}
+{"time":"2026-03-24T20:50:33.969253673-04:00","level":"INFO","msg":"State sync service starting","log_file":"/home/ubuntu/.logs/state-sync/state-sync.log"}
+{"time":"2026-03-24T20:50:33.969331238-04:00","level":"INFO","msg":"Starting state sync service"}
+{"time":"2026-03-24T20:50:33.969353566-04:00","level":"INFO","msg":"Pulling initial state from S3"}
+{"time":"2026-03-24T20:50:33.969358702-04:00","level":"INFO","msg":"Pull not allowed currently, will retry when config changes"}
+{"time":"2026-03-24T20:50:33.969371694-04:00","level":"INFO","msg":"Connecting to browser","port":"9222"}
+{"time":"2026-03-24T20:50:33.975680802-04:00","level":"INFO","msg":"Found chrome://newtab/ to reuse","target_id":"1D53CE0A652243993963F4EFF22E0CCF"}
+{"time":"2026-03-24T20:50:33.975716045-04:00","level":"INFO","msg":"Reusing existing target for cookie sync","target_id":"1D53CE0A652243993963F4EFF22E0CCF"}
+{"time":"2026-03-24T20:50:33.975726157-04:00","level":"INFO","msg":"Successfully connected to browser"}
+{"time":"2026-03-24T20:50:33.975729517-04:00","level":"INFO","msg":"Syncing state to browser"}
+{"time":"2026-03-24T20:50:33.975733925-04:00","level":"INFO","msg":"Syncing cookies to browser","cookie_count":0}
+{"time":"2026-03-24T20:50:33.9732676-04:00","level":"INFO","msg":"Successfully synced cookies to browser"}
+{"time":"2026-03-24T20:50:33.973281249-04:00","level":"INFO","msg":"Successfully synced state to browser"}
+{"time":"2026-03-24T20:50:33.973284591-04:00","level":"INFO","msg":"Setting up state watchers"}
+{"time":"2026-03-24T20:50:33.973288456-04:00","level":"INFO","msg":"Starting CDP watcher"}
+{"time":"2026-03-24T20:50:33.983788792-04:00","level":"INFO","msg":"Created hidden monitoring target","target_id":"D8EFF65DCA6DA6D2ACE293334ECB5832"}
+{"time":"2026-03-24T20:50:33.983807563-04:00","level":"INFO","msg":"Using hidden target for monitoring (should not be visible)"}
+{"time":"2026-03-24T20:50:33.983811985-04:00","level":"INFO","msg":"State watchers setup complete"}
+{"time":"2026-03-24T20:50:33.983814401-04:00","level":"INFO","msg":"Waiting for browser to stabilize after cookie sync","delay":5000000000}
+{"time":"2026-03-24T20:50:33.983823876-04:00","level":"INFO","msg":"Starting target monitoring"}
+{"time":"2026-03-24T20:50:34.004169567-04:00","level":"INFO","msg":"Handling target","target_id":"1D53CE0A652243993963F4EFF22E0CCF","url":"chrome://newtab/"}
+{"time":"2026-03-24T20:50:38.986741068-04:00","level":"INFO","msg":"Browser stabilization complete, cookie polling started with current state as baseline"}
+{"time":"2026-03-24T20:50:38.986852566-04:00","level":"INFO","msg":"Wrote sync ready marker","path":"/home/ubuntu/.config/state-sync/.sync-ready"}
+{"time":"2026-03-24T20:50:38.986860687-04:00","level":"INFO","msg":"State sync service started successfully"}
+{"time":"2026-03-24T20:50:38.986890406-04:00","level":"INFO","msg":"Starting cookie polling","interval":1000000000}
+{"time":"2026-03-24T20:50:38.986982397-04:00","level":"INFO","msg":"Started watching config file","path":"/home/ubuntu/.config/state-sync/state-sync-config.yaml"}
+{"time":"2026-03-24T22:50:38.411424608-04:00","level":"INFO","msg":"Config file changed, reloading","path":"/home/ubuntu/.config/state-sync/state-sync-config.yaml","operation":"CREATE"}
+{"time":"2026-03-26T21:42:37.072744893-04:00","level":"INFO","msg":"Config file changed, reloading","path":"/home/ubuntu/.config/state-sync/state-sync-config.yaml","operation":"CREATE"}
+{"time":"2026-03-26T22:43:03.435182404-04:00","level":"INFO","msg":"Config file changed, reloading","path":"/home/ubuntu/.config/state-sync/state-sync-config.yaml","operation":"CREATE"}
+{"time":"2026-03-29T00:09:50.633725572-04:00","level":"INFO","msg":"Config file changed, reloading","path":"/home/ubuntu/.config/state-sync/state-sync-config.yaml","operation":"CREATE"}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesorías Integrales CYJ - Administración de Condominios, Corretaje y Mantenimiento</title>
+    <meta name="description" content="Asesorías Integrales CYJ - Administración de condominios, corretaje de propiedades y mantenimiento de áreas verdes en Chile.">
+    <meta name="keywords" content="administración condominios, corretaje propiedades, mantenimiento áreas verdes, Chile, CYJ">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #1e40af; --primary-light: #3b82f6; --primary-bg: rgba(30, 64, 175, 0.1); }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #e2e8f0; z-index: 1000; padding: 0 1rem; }
+        .nav-container { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 48px; height: 48px; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon img { width: 40px; height: 40px; object-fit: contain; }
+        .logo-text h1 { font-size: 16px; font-weight: 700; color: #0f172a; }
+        .logo-text span { font-size: 14px; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { text-decoration: none; color: #64748b; font-weight: 500; font-size: 14px; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; }
+        .btn:hover { background: var(--primary-light); }
+        
+        .hero { padding: 128px 1rem 80px; background: linear-gradient(to bottom right, #f8fafc, #f1f5f9); }
+        .hero-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .hero-content h1 { font-size: 48px; font-weight: 700; line-height: 1.2; color: #0f172a; margin-bottom: 24px; }
+        .hero-content h1 span { color: var(--primary); }
+        .hero-content p { font-size: 18px; color: #64748b; margin-bottom: 32px; max-width: 500px; }
+        .hero-buttons { display: flex; gap: 16px; }
+        .btn-outline { background: transparent; border: 1px solid #cbd5e1; color: #475569; }
+        .badge { display: inline-block; padding: 4px 12px; background: var(--primary-bg); color: var(--primary); border-radius: 16px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+        .hero-image img { width: 100%; height: 400px; object-fit: cover; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        
+        .stats { background: var(--primary); padding: 32px 1rem; }
+        .stats-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        .stat-item h2 { font-size: 36px; font-weight: 700; color: white; }
+        .stat-item p { font-size: 14px; color: rgba(255,255,255,0.8); }
+        
+        .services { padding: 80px 1rem; background: white; }
+        .section-container { max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 16px; }
+        .section-header p { font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .service-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+        .service-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .service-image { position: relative; height: 200px; }
+        .service-image img { width: 100%; height: 100%; object-fit: cover; }
+        .service-content { padding: 24px; }
+        .service-content h3 { font-size: 20px; font-weight: 600; color: #0f172a; margin-bottom: 8px; }
+        .service-content p { font-size: 14px; color: #64748b; margin-bottom: 16px; }
+        .service-content ul { list-style: none; }
+        .service-content li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #64748b; margin-bottom: 8px; }
+        .service-content li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+        
+        .features { padding: 80px 1rem; background: #f8fafc; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        .feature-card { text-align: center; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .feature-icon { width: 56px; height: 56px; background: var(--primary-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .feature-icon svg { width: 28px; height: 28px; stroke: var(--primary); }
+        .feature-card h3 { font-size: 18px; font-weight: 600; color: #0f172a; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: #64748b; }
+        
+        .cta { padding: 80px 1rem; background: var(--primary); text-align: center; }
+        .cta h2 { font-size: 36px; font-weight: 700; color: white; margin-bottom: 16px; }
+        .cta p { font-size: 18px; color: rgba(255,255,255,0.9); margin-bottom: 32px; }
+        .cta .btn { background: white; color: var(--primary); }
+        
+        .contact { padding: 80px 1rem; background: white; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+        .contact-info-item { display: flex; gap: 16px; margin-bottom: 24px; }
+        .contact-icon { width: 48px; height: 48px; background: var(--primary-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon svg { width: 24px; height: 24px; stroke: var(--primary); }
+        .contact-info-item h4 { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+        .contact-info-item p { font-size: 14px; color: #64748b; }
+        .contact-form { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .contact-form h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .contact-form p { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+        .form-group textarea { resize: none; height: 100px; }
+        
+        footer { background: #0f172a; color: white; padding: 48px 1rem 24px; }
+        .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 32px; }
+        .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .footer-logo .logo-icon { background: var(--primary); }
+        .footer-logo h3 { font-size: 18px; font-weight: 700; }
+        .footer-desc { font-size: 14px; color: #94a3b8; max-width: 350px; }
+        .footer-links h4, .footer-contact h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: #60a5fa; }
+        .footer-contact p { font-size: 14px; color: #94a3b8; margin-bottom: 8px; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; text-align: center; }
+        .footer-bottom p { font-size: 14px; color: #64748b; }
+        
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p { margin: 0 auto 32px; }
+            .hero-buttons { justify-content: center; }
+            .services-grid, .features-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid, .footer-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 32px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .features-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><img src="logo.png" alt="CYJ Logo"></div>
+                <div class="logo-text"><h1>Asesorías Integrales</h1><span>CYJ</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+                <a href="sistema/" class="btn">Acceder al Sistema →</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">+15 años de experiencia</span>
+                <h1>Soluciones Integrales para <span>tu Propiedad</span></h1>
+                <p>Administración de condominios, corretaje de propiedades y mantenimiento de áreas verdes. Un solo proveedor para todas tus necesidades inmobiliarias.</p>
+                <div class="hero-buttons">
+                    <a href="sistema/" class="btn">Acceder al Sistema →</a>
+                    <a href="#contacto" class="btn btn-outline">Contáctanos</a>
+                </div>
+            </div>
+            <div class="hero-image"><img src="images/hero.png" alt="Asesorías Integrales CYJ"></div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item"><h2>15+</h2><p>Años de Experiencia</p></div>
+            <div class="stat-item"><h2>50+</h2><p>Condominios Administrados</p></div>
+            <div class="stat-item"><h2>500+</h2><p>Clientes Satisfechos</p></div>
+            <div class="stat-item"><h2>100%</h2><p>Compromiso</p></div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge">Nuestros Servicios</span>
+                <h2>Soluciones Completas para tu Propiedad</h2>
+                <p>Ofrecemos una gama completa de servicios inmobiliarios.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image"><img src="images/condominios.png" alt="Administración de Condominios"></div>
+                    <div class="service-content">
+                        <h3>Administración de Condominios</h3>
+                        <p>Gestión integral de condominios con control de residentes, órdenes de trabajo y finanzas.</p>
+                        <ul><li>Control de residentes y propiedades</li><li>Gestión de órdenes de trabajo</li><li>Administración financiera</li><li>Reportes en tiempo real</li></ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image"><img src="images/corretaje.png" alt="Corretaje de Propiedades"></div>
+                    <div class="service-content">
+                        <h3>Corretaje de Propiedades</h3>
+                        <p>Servicios profesionales de compra, venta y arriendo de propiedades.</p>
+                        <ul><li>Valuación de propiedades</li><li>Marketing inmobiliario</li><li>Asesoría legal</li><li>Gestión de contratos</li></ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image"><img src="images/areas-verdes.png" alt="Mantenimiento de Áreas Verdes"></div>
+                    <div class="service-content">
+                        <h3>Mantenimiento de Áreas Verdes</h3>
+                        <p>Servicios profesionales de jardinería y mantenimiento para condominios y empresas.</p>
+                        <ul><li>Jardinería profesional</li><li>Sistemas de riego</li><li>Poda y mantenimiento</li><li>Diseño paisajístico</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="nosotros">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge">Por qué elegirnos</span>
+                <h2>Comprometidos con la Excelencia</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h3>Equipo Profesional</h3>
+                    <p>Equipo altamente capacitado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></div>
+                    <h3>Confianza</h3>
+                    <p>Años de experiencia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h3>Atención 24/7</h3>
+                    <p>Siempre disponibles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <h3>Calidad</h3>
+                    <p>Excelencia garantizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="section-container">
+            <h2>¿Listo para Optimizar la Gestión de tu Propiedad?</h2>
+            <p>Accede a nuestro sistema de gestión integral.</p>
+            <a href="sistema/" class="btn">Acceder al Sistema →</a>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="badge">Contáctanos</span>
+                    <h2 style="font-size: 36px; font-weight: 700; margin: 16px 0 24px;">Estamos para Ayudarte</h2>
+                    <p style="color: #64748b; margin-bottom: 32px;">Contáctanos para conocer más sobre nuestros servicios.</p>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div><h4>Dirección</h4><p>Av. Principal 1234, Oficina 56</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div>
+                        <div><h4>Teléfono</h4><p>+56 9 1234 5678</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                        <div><h4>Email</h4><p>contacto@asesoriascyj.cl</p></div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <p>Completa el formulario y nos pondremos en contacto.</p>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+                            <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+56 9 1234 5678"></div>
+                        </div>
+                        <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+                        <div class="form-group"><label>Servicio</label><select><option>Administración de Condominios</option><option>Corretaje de Propiedades</option><option>Mantenimiento de Áreas Verdes</option></select></div>
+                        <div class="form-group"><label>Mensaje</label><textarea placeholder="¿En qué podemos ayudarte?"></textarea></div>
+                        <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo"><div class="logo-icon"><img src="logo.png" style="width: 32px; height: 32px; object-fit: contain;"></div><div><h3>Asesorías Integrales</h3><span style="color: #60a5fa;">CYJ</span></div></div>
+                <p class="footer-desc">Empresa líder en administración de condominios, corretaje de propiedades y mantenimiento de áreas verdes.</p>
+            </div>
+            <div class="footer-links"><h4>Enlaces</h4><ul><li><a href="#servicios">Servicios</a></li><li><a href="#contacto">Contacto</a></li><li><a href="sistema/">Sistema</a></li></ul></div>
+            <div class="footer-contact"><h4>Contacto</h4><p>+56 9 1234 5678</p><p>contacto@asesoriascyj.cl</p></div>
+        </div>
+        <div class="footer-bottom"><p>© 2025 Asesorías Integrales CYJ. Todos los derechos reservados.</p></div>
+    </footer>
+</body>
+</html>
