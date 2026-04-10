@@ -175,3 +175,4 @@ Privado - Condominio Laguna Norte
 ---
 
 **Desarrollado con ❤️ para Condominio Laguna Norte**
+# Deployment fix - PostgreSQL configuration
