@@ -4,12 +4,7 @@ import { Prisma } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
 
-const BACKUP_DIR = '/home/z/my-project/backups'
-
-// Ensure backup directory exists
-if (!fs.existsSync(BACKUP_DIR)) {
-  fs.mkdirSync(BACKUP_DIR, { recursive: true })
-}
+const BACKUP_DIR = process.env.BACKUP_DIR || path.join(process.cwd(), '.backups')
 
 // GET - List all backups with stats
 export async function GET(request: NextRequest) {
@@ -101,6 +96,11 @@ export async function POST(request: NextRequest) {
     })
 
     try {
+      // Ensure backup directory exists
+      if (!fs.existsSync(BACKUP_DIR)) {
+        fs.mkdirSync(BACKUP_DIR, { recursive: true })
+      }
+
       // Get database file path
       const dbPath = path.join(process.cwd(), 'prisma', 'dev.db')
       
